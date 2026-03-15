@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodtech — ClickUp Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --sidebar-bg: #ffffff;
+            --text: #000000;
+            --text-secondary: #545454;
+            --text-grey: rgba(0, 0, 0, 0.4);
+            --accent: #0052FF;
+            --accent-dim: rgba(0, 82, 255, 0.12);
+            --border: rgba(0, 0, 0, 0.06);
+            --header-border: rgba(0, 0, 0, 0.1);
+            --lang-btn-border: rgba(0, 0, 0, 0.14);
+            --logo-color: #000;
+            --squares-border: #deddda;
+            --footer-text: rgba(0, 0, 0, 0.3);
+            --shadow-media: 0 40px 100px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ========== RESET ========== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ========== BASE ========== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== THREE-COLUMN LAYOUT: GRID SIDEBARS + WHITE CENTER ========== */
+        .case-sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: calc((100vw - 1000px) / 2);
+            z-index: 10;
+            pointer-events: none;
+            background-color: var(--bg);
+            opacity: 0.45;
+        }
+
+        .case-sidebar--left {
+            left: 0;
+            -webkit-mask-image: linear-gradient(to right, black 0%, black 60%, transparent 100%);
+            mask-image: linear-gradient(to right, black 0%, black 60%, transparent 100%);
+        }
+
+        .case-sidebar--right {
+            right: 0;
+            -webkit-mask-image: linear-gradient(to left, black 0%, black 60%, transparent 100%);
+            mask-image: linear-gradient(to left, black 0%, black 60%, transparent 100%);
+        }
+
+        .page-center {
+            position: relative;
+            z-index: 20;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--bg);
+            padding: 0 40px;
+            box-shadow: 0 0 0 1px var(--border);
+        }
+
+        /* Fixed Background Grid */
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-image:
+                linear-gradient(to right, var(--squares-border) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--squares-border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
+        }
+
+        /* ========== HEADER (constrained to central white column) ========== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1000px;
+            height: 56px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-header:hover {
+            opacity: 0.7;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            color: var(--text);
+            transform: translateY(-50%) translateX(-2px);
+        }
+
+        .back-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover svg {
+            transform: translateX(-2px);
+        }
+
+        .lang-btn {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--text);
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-50%) translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            text-align: center;
+            padding: 100px 0 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 60px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-grey);
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* ========== MEDIA BLOCK (Rich Style) ========== */
+        .media-block {
+            position: relative;
+            margin: 40px -40px 100px;
+            /* Counteract page-center padding to take full width */
+            padding: 24px;
+        }
+
+        .media-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--accent-dim), rgba(0, 82, 255, 0.04));
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-media);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .media-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-placeholder-text {
+            font-size: 14px;
+            color: var(--text-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        /* Large Corner Accents (Standard Style) */
+        .media-block::before,
+        .media-block::after,
+        .card-corners::before,
+        .card-corners::after {
+            content: "";
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border: 3px solid #003EB2;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .media-block::before {
+            top: 8px;
+            left: 8px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .media-block::after {
+            top: 8px;
+            right: 8px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .card-corners::before {
+            bottom: 8px;
+            left: 8px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .card-corners::after {
+            bottom: 8px;
+            right: 8px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* ========== CONTENT SECTIONS ========== */
+        .content-section {
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-heading {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .section-body {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .section-body p {
+            margin-bottom: 24px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+
+        .tech-list li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .tech-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-secondary);
+        }
+
+        /* ========== FOOTER ========== */
+        .case-footer {
+            padding: 100px 0 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: var(--footer-text);
+            font-family: monospace;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1100px) {
+            .case-sidebar {
+                display: none;
+            }
+
+            .page-center {
+                margin: 0 auto;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-center {
+                padding: 0 24px;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .logo-header {
+                display: none;
+            }
+
+            .media-block {
+                margin: 20px -8px 60px;
+                padding: 14px;
+            }
+
+            .media-block::before {
+                top: 4px;
+                left: 4px;
+            }
+
+            .media-block::after {
+                top: 4px;
+                right: 4px;
+            }
+
+            .card-corners::before {
+                bottom: 4px;
+                left: 4px;
+            }
+
+            .card-corners::after {
+                bottom: 4px;
+                right: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== FIXED BACKGROUND GRID ===== -->
+    <div class="grid-background" aria-hidden="true"></div>
+
+    <!-- SIDEBARS -->
+    <div class="case-sidebar case-sidebar--left" aria-hidden="true"></div>
+    <div class="case-sidebar case-sidebar--right" aria-hidden="true"></div>
+
+    <div class="page-center">
+        <header class="site-header">
+            <a href="/services" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span data-i18n="back">Back</span>
+            </a>
+            <a href="/" class="logo-header">
+                <img src="../../LOGO.png" alt="Zodtech" class="logo-icon">
+                <div class="logo-text">Zodtech</div>
+            </a>
+            <button id="lang-switcher" class="lang-btn">RU</button>
+        </header>
+
+        <main>
+            <!-- HERO -->
+            <section class="hero">
+                <h1 class="hero-title" data-i18n="heroTitle">CRM and Sales Automation</h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">−60% ручной работы за 2 недели
+                </p>
+            </section>
+
+            <!-- MAIN MEDIA -->
+            <div class="media-block">
+                <div class="card-corners"></div>
+                <div class="media-frame">
+                    <span class="media-placeholder-text">Project Preview</span>
+                </div>
+            </div>
+
+            <!-- SUMMARY -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="summaryHeading">About the client:</h2>
+                <div class="section-body">
+                    <p data-i18n="summaryText">B2B SaaS company, 11 people. Two sales managers. Leads were coming from
+                        everywhere, but there was no system. Some were lost, managers spent half the day in spreadsheets
+                        instead of selling.</p>
+                </div>
+            </section>
+
+            <!-- PROCESS/WHAT WE DID -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="processHeading">What we did:</h2>
+                <div class="section-body">
+                    <p data-i18n="processText">Conducted an audit of sales processes and designed a new funnel with 5
+                        stages and automations. Integrated all lead sources — website, email, LinkedIn, WhatsApp,
+                        Telegram, Google Forms. Everything goes automatically into Bitrix24. Set up automatic
+                        notifications: lead without response for 3 days — reminder sent, manager moves lead — client
+                        gets email, system prepares proposal draft.</p>
+                </div>
+            </section>
+
+            <!-- SECOND MEDIA BLOCK -->
+            <div class="media-block">
+                <div class="card-corners"></div>
+                <div class="media-frame">
+                    <span class="media-placeholder-text">CRM & Lead Automation Architecture</span>
+                </div>
+            </div>
+
+            <!-- RESULTS -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="resultsHeading">Results:</h2>
+                <div class="section-body">
+                    <p data-i18n="resultsText">We went through several iterations with the business, discussed every
+                        trigger, tested every scenario, optimized to perfection. Built a dashboard for real-time metric
+                        tracking. The entire process — from idea to result — took exactly 2 weeks.</p>
+                    <ul class="tech-list">
+                        <li data-i18n="res1">+47% CTR growth to demo</li>
+                        <li data-i18n="res2">-60% reduction in manual work</li>
+                        <li data-i18n="res3">Sales cycle reduced from 35 to 21 days</li>
+                        <li data-i18n="res4">Lead response time reduced from 24 to 4 hours</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TECH STACK -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="techHeading">Tech Stack:</h2>
+                <ul class="tech-list">
+                    <li>Bitrix24</li>
+                    <li>n8n</li>
+                    <li>Google Workspace</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="case-footer">
+            <p class="footer-copy" data-i18n="footerCopy">© 2026 Zodtech. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            "en": {
+                "heroTitle": "CRM and Sales Automation",
+                "heroSubtitle": "-60% manual work in 2 weeks",
+                "summaryHeading": "About the client:",
+                "summaryText": "B2B SaaS company, 11 people. Two sales managers. Leads were coming from everywhere, but there was no system. Some were lost, managers spent half the day in spreadsheets instead of selling.",
+                "processHeading": "What we did:",
+                "processText": "Conducted an audit of sales processes and designed a new funnel with 5 stages and automations. Integrated all lead sources — website, email, LinkedIn, WhatsApp, Telegram, Google Forms. Everything goes automatically into Bitrix24. Set up automatic notifications: lead without response for 3 days — reminder sent, manager moves lead — client gets email, system prepares proposal draft.",
+                "resultsHeading": "Results:",
+                "resultsText": "We went through several iterations with the business, discussed every trigger, tested every scenario, optimized to perfection. Built a dashboard for real-time metric tracking. The entire process — from idea to result — took exactly 2 weeks.",
+                "res1": "+47% CTR growth to demo",
+                "res2": "-60% reduction in manual work",
+                "res3": "Sales cycle reduced from 35 to 21 days",
+                "res4": "Lead response time reduced from 24 to 4 hours",
+                "techHeading": "Tech Stack:",
+                "footerCopy": "© 2026 Zodtech. All rights reserved."
+            },
+            "ru": {
+                "heroTitle": "Автоматизация CRM и продаж",
+                "heroSubtitle": "−60% ручной работы за 2 недели",
+                "summaryHeading": "О проекте:",
+                "summaryText": "B2B SaaS компания, 11 человек. Два менеджера по продажам. Лиды приходили отовсюду, но системы не было. Часть терялась, менеджеры половину дня проводили в таблицах вместо продаж.",
+                "processHeading": "Что мы сделали:",
+                "processText": "Провели аудит процессов продаж и спроектировали новую воронку с 5 этапами и автоматизациями. Интегрировали все источники лидов — сайт, email, LinkedIn, WhatsApp, Telegram, Google Forms. Все лиды автоматически попадают в Bitrix24. Настроили цепочки уведомлений: лид без ответа 3 дня — напоминание, менеджер меняет статус — клиенту письмо, система готовит черновик предложения.",
+                "resultsHeading": "Результаты:",
+                "resultsText": "Мы прошли через несколько итераций с бизнесом, обсудили каждый триггер, протестировали каждый сценарий и оптимизировали всё до идеала. Построили дашборд для отслеживания метрик в реальном времени. Весь процесс — от идеи до результата — занял ровно 2 недели.",
+                "res1": "+47% рост CTR в демо-заявку",
+                "res2": "-60% сокращение ручной работы",
+                "res3": "Цикл продажи сокращен с 35 до 21 дня",
+                "res4": "Время ответа на лид сокращено с 24 до 4 часов",
+                "techHeading": "Стек технологий:",
+                "footerCopy": "© 2026 Zodtech. Все права защищены."
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            const langBtn = document.getElementById('lang-switcher');
+            if (langBtn) langBtn.textContent = lang === 'en' ? 'RU' : 'EN';
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.innerHTML = t[key];
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLanguage(currentLang);
+            document.getElementById('lang-switcher').addEventListener('click', () => {
+                const next = currentLang === 'en' ? 'ru' : 'en';
+                localStorage.setItem('lang', next);
+                updateLanguage(next);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+# Redirect old /projects/ URLs to /services/ (e.g. /projects/clickup -> /services/clickup)
+RewriteEngine On
+RewriteRule ^projects/(.*)$ /services/$1 [R=301,L]
+
+# Optional: if using Apache and directory indexes are disabled,
+# uncomment below to serve index.html for directory requests.
+# DirectoryIndex index.html
+
+# Optional: rewrite clean URLs (no .html) to .html for legacy file-based setup.
+# Not needed when using folder structure (e.g. portfolio/index.html, services/index.html).
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^([^/.]+)/?$ $1.html [NC,L]
+# RewriteRule ^case-study/([^/.]+)/?$ case-study/$1.html [NC,L]

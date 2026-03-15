@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodtech - Web Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --logo-text-color: #000000;
+            --accent-color: #0052FF;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(0, 0, 0, 0.06);
+            --lang-btn-border: rgba(0, 0, 0, 0.08);
+            --squares-border: #e9ecef;
+            --modal-bg: #ffffff;
+            --close-btn-bg: #f0f0f0;
+        }
+
+        .cal-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            z-index: 10002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .cal-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .cal-modal-content {
+            background: var(--modal-bg);
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+
+        .cal-modal-overlay.active .cal-modal-content {
+            transform: scale(1);
+        }
+
+        .close-cal-button {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: var(--close-btn-bg);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10003;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-cal-button:hover {
+            background: #e0e0e0;
+        }
+
+        #my-cal-inline-15min {
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
+
+        @media (max-width: 768px) {
+            .cal-modal-content {
+                width: 95%;
+                height: 90vh;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            width: 100vw;
+            padding: 80px 20px 60px;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 56px;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            z-index: 999998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #squares-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .top-left-logo {
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--logo-text-color);
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .top-left-logo:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .top-left-logo .logo-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .top-left-logo .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+        }
+
+        @media (max-width: 768px) {
+            .top-left-logo {
+                display: none !important;
+            }
+        }
+
+        .lang-btn {
+            position: absolute !important;
+            right: 16px !important;
+            top: 50% !important;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            border: 1px solid var(--lang-btn-border);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.55);
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 40px;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.75;
+            max-width: 520px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            padding: 28px 26px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 14px;
+            height: 2px;
+            background: var(--accent-color);
+            border-radius: 999px;
+        }
+
+        .cases {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .case {
+            padding: 16px 16px 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .case-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .case-meta {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .case-row {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
+
+        .case-label {
+            font-weight: 600;
+            opacity: 0.85;
+        }
+
+        .cta-card {
+            margin-top: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .cta-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .cta-text {
+            font-size: 14px;
+            opacity: 0.8;
+            max-width: 420px;
+        }
+
+        .card-footer {
+            margin-top: 8px;
+        }
+
+        .select-service-btn {
+            padding: 10px 22px;
+            border-radius: 999px;
+            border: none;
+            background: var(--accent-color);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 82, 255, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .select-service-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 40px rgba(0, 82, 255, 0.45);
+            background: #003fcc;
+        }
+
+        .select-service-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 20px rgba(0, 82, 255, 0.35);
+        }
+
+        .select-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 10000;
+        }
+
+        .select-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .select-overlay-inner {
+            width: 90%;
+            max-width: 880px;
+            background: rgba(15, 15, 15, 0.04);
+            border-radius: 24px;
+            padding: 28px 28px 32px;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transform: translateY(16px);
+            opacity: 0;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .select-overlay.active .select-overlay-inner {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .select-close {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: #111;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .select-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .select-card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            padding: 26px 24px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+
+        .select-card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .select-card-text {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin-bottom: 18px;
+        }
+
+        .select-card-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .select-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+
+        .select-icon.whatsapp {
+            background: #25D366;
+        }
+
+        .select-icon.instagram {
+            background: radial-gradient(circle at 30% 30%, #fdf497 0, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .select-icon.x {
+            background: #111111;
+        }
+
+        .select-icon-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .select-icon-link:hover .select-icon,
+        .select-icon-link:hover .select-icon-img {
+            transform: translateY(-2px);
+        }
+
+        .select-icon-label {
+            white-space: nowrap;
+        }
+
+        .select-icon-img {
+            width: auto;
+            height: auto;
+            max-width: 40px;
+            max-height: 40px;
+            display: block;
+            vertical-align: middle;
+            transition: transform 0.2s ease;
+        }
+
+        .select-cal-btn {
+            margin-top: auto;
+            align-self: flex-start;
+            width: max-content;
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            background: #0052FF;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            letter-spacing: normal;
+            text-transform: none;
+            box-shadow: 0 12px 30px rgba(0, 82, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 96px;
+            }
+
+            .select-overlay-inner {
+                padding: 22px 18px 26px;
+            }
+
+            .select-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="/" class="top-left-logo">
+            <img src="../LOGO.png" alt="zodtech Logo" class="logo-icon">
+            <div class="logo-text">Zodtech</div>
+        </a>
+        <button id="lang-switcher" class="lang-btn">RU</button>
+    </header>
+
+    <div class="container">
+        <header class="page-header">
+            <div class="eyebrow" data-i18n="eyebrowWeb">Услуга · Web</div>
+            <h1 class="title" data-i18n="webPageTitle">High-End Web Development</h1>
+            <p class="subtitle" data-i18n="webPageSubtitle">
+                Создаём быстрые, живые и аккуратные сайты, которые чувствуют себя одинаково хорошо на десктопе и
+                телефоне.
+            </p>
+        </header>
+
+        <div class="grid">
+            <section class="card">
+                <div class="section-subtitle" data-i18n="functionality">Функционал</div>
+                <h2 class="section-title" data-i18n="webFuncTitle">Что входит в разработку</h2>
+                <ul class="feature-list">
+                    <li data-i18n="webFunc1">Проработка структуры страниц с упором на конверсию.</li>
+                    <li data-i18n="webFunc2">Адаптивная вёрстка под мобильные, планшеты и десктоп.</li>
+                    <li data-i18n="webFunc3">Микроанимации и плавные переходы на GSAP.</li>
+                    <li data-i18n="webFunc4">Интеграция с аналитикой и пикселями рекламных систем.</li>
+                    <li data-i18n="webFunc5">Оптимизация скорости загрузки для Lighthouse 90+.</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <div class="section-subtitle" data-i18n="casesLabel">Кейсы</div>
+                <h2 class="section-title" data-i18n="casesTitle">Как это работает в реальности</h2>
+                <div class="cases">
+                    <article class="case">
+                        <div class="case-title" data-i18n="case1Title">SaaS‑сервис для автоматизации продаж</div>
+                        <div class="case-meta" data-i18n="case1Meta">Landing · B2B</div>
+                        <p class="case-row">
+                            <span class="case-label" data-i18n="taskLabel">Задача:</span>
+                            <span data-i18n="case1Task">увеличить количество демо-заявок с трафика из рекламы.</span>
+                        </p>
+                        <p class="case-row">
+                            <span class="case-label" data-i18n="solutionLabel">Решение:</span>
+                            <span data-i18n="case1Solution">сегментировали посадку под разные роли (CEO, Sales lead),
+                                добавили анимации сценариев продукта.</span>
+                        </p>
+                        <p class="case-row">
+                            <span class="case-label" data-i18n="resultLabel">Результат:</span>
+                            <span data-i18n="case1Result">+47% к CTR формы записи на демо и рост конверсии в заявку до
+                                6,3%.</span>
+                        </p>
+                    </article>
+                    <article class="case">
+                        <div class="case-title" data-i18n="case2Title">Перезапуск сайта IT‑академии</div>
+                        <div class="case-meta" data-i18n="case2Meta">Multi‑page · Education</div>
+                        <p class="case-row">
+                            <span class="case-label" data-i18n="taskLabel">Задача:</span>
+                            <span data-i18n="case2Task">сделать современный сайт, который будет понятен подросткам и
+                                родителям.</span>
+                        </p>
+                        <p class="case-row">
+                            <span class="case-label" data-i18n="solutionLabel">Решение:</span>
+                            <span data-i18n="case2Solution">сделали лендинги под основные курсы, добавили интерактивные
+                                блоки с программой и отзывами.</span>
+                        </p>
+                        <p class="case-row">
+                            <span class="case-label" data-i18n="resultLabel">Результат:</span>
+                            <span data-i18n="case2Result">увеличили количество заявок с органического трафика на 38% без
+                                дополнительных вложений в рекламу.</span>
+                        </p>
+                    </article>
+                </div>
+
+                <div class="cta-card">
+                    <div class="cta-title" data-i18n="ctaTitle">Хотите похожий результат?</div>
+                    <p class="cta-text" data-i18n="ctaText">
+                        Нажмите «Выбрать», чтобы обсудить вашу задачу в мессенджере или сразу забронировать слот на
+                        созвон.
+                    </p>
+                    <div class="card-footer">
+                        <button class="select-service-btn" data-i18n="selectLabel">Выбрать</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer style="text-align:center;padding:40px 24px 24px;margin-top:32px;border-top:1px solid rgba(0,0,0,0.06);color:#9ca3af;font-size:13px;">
+            <p class="footer-copy" data-i18n="footerCopy">© 2026 Zodtech. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div class="select-overlay" id="select-overlay">
+        <div class="select-overlay-inner">
+            <button class="select-close" id="select-close" aria-label="Close">&times;</button>
+            <div class="select-grid">
+                <div class="select-card">
+                    <h3 class="select-card-title" data-i18n="discussTaskTitle">Обсудить задачу</h3>
+                    <p class="select-card-text" data-i18n="discussTaskText">
+                        Напишите нам в удобном мессенджере — обсудим задачу и подберём решение.
+                    </p>
+                    <div class="select-card-icons">
+                        <a href="https://wa.me/77002174701" target="_blank" rel="noopener noreferrer" class="select-icon-link" aria-label="WhatsApp"><img src="../whatsapp.png"
+                                alt="WhatsApp" class="select-icon-img"></a>
+                        <a href="https://www.instagram.com/nurjaks_89?igsh=MWg3dDVlZ2I2cGpkbA==" target="_blank" rel="noopener noreferrer" class="select-icon-link" aria-label="Instagram"><img src="../instagram.png"
+                                alt="Instagram" class="select-icon-img"></a>
+                        <a href="https://x.com/NAbildaev60153" target="_blank" rel="noopener noreferrer" class="select-icon-link" aria-label="X"><span class="select-icon x">X</span><span
+                                class="select-icon-label keep-label" data-i18n="socialX">(twitter)</span></a>
+                    </div>
+                </div>
+                <div class="select-card">
+                    <h3 class="select-card-title" data-i18n="callDiscussTitle">Созвониться, обсудить</h3>
+                    <p class="select-card-text" data-i18n="callDiscussText">
+                        Забронируйте удобное время для бесплатной консультации через Cal.com.
+                    </p>
+                    <button type="button" class="select-cal-btn" id="open-cal-from-overlay" data-i18n="callDiscussCta">
+                        Перейти к календарю
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cal-modal-overlay" id="cal-modal-overlay">
+        <div class="cal-modal-content">
+            <button type="button" class="close-cal-button" id="close-cal-button" aria-label="Close">&times;</button>
+            <div id="my-cal-inline-15min"></div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            "en": {
+                "back": "Back",
+                "ourServices": "Our Services",
+                "bookCall": "Free Consult",
+                "freeConsult": "Free Consult",
+                "aiEyebrow": "AI-Bots · Cases",
+                "aiPortfolioTitle": "AI-Bots Portfolio",
+                "viewLabel": "View",
+                "title": "Zodtech",
+                "headline": "AI-Bots Powered Automation for<br><span>Business Processes</span>",
+                "subheadline": "Smart workflows to scale<br>your business.",
+                "discussTaskTitle": "Discuss the task",
+                "discussTaskText": "Write to us in a convenient messenger — we will discuss your task and suggest a solution.",
+                "callDiscussTitle": "Call to discuss",
+                "callDiscussText": "Book a convenient time for a free consultation via Cal.com.",
+                "callDiscussCta": "Open calendar",
+                "socialWhatsapp": "WhatsApp",
+                "socialInstagram": "Instagram",
+                "socialX": "(twitter)",
+                "automation": "Automation",
+                "web": "Web Development",
+                "ai": "AI-Bots",
+                "portfolio": "Portfolio",
+                "footerCopy": "© 2026 Zodtech. All rights reserved."
+            },
+            "ru": {
+                "back": "Назад",
+                "ourServices": "Наши услуги",
+                "bookCall": "Обсудить задачу",
+                "freeConsult": "Обсудить задачу",
+                "aiEyebrow": "AI-Bots · Кейсы",
+                "aiPortfolioTitle": "AI-Bots портфолио",
+                "viewLabel": "Смотреть",
+                "title": "Zodtech",
+                "headline": "Автоматизация бизнеса на базе AI",
+                "subheadline": "Умные рабочие процессы для<br>масштабирования вашего бизнеса.",
+                "discussTaskTitle": "Обсудить задачу",
+                "discussTaskText": "Напишите нам в удобном мессенджере — обсудим задачу и подберём решение.",
+                "callDiscussTitle": "Созвониться, обсудить",
+                "callDiscussText": "Забронируйте удобное время для бесплатной консультации через Cal.com.",
+                "callDiscussCta": "Перейти к календарю",
+                "socialWhatsapp": "WhatsApp",
+                "socialInstagram": "Instagram",
+                "socialX": "(twitter)",
+                "automation": "Автоматизация",
+                "web": "Веб-разработка",
+                "ai": "AI-Bots",
+                "portfolio": "Портфолио",
+                "footerCopy": "© 2026 Zodtech. Все права защищены."
+            }
+        };
+
+        let currentLang = "ru";
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            const langBtn = document.getElementById("lang-switcher");
+            if (langBtn) langBtn.textContent = lang === "en" ? "RU" : "EN";
+
+            const t = translations[lang];
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (t[key]) {
+                    el.innerHTML = t[key];
+                }
+            });
+        }
+
+        function initLanguage() {
+            const langBtn = document.getElementById("lang-switcher");
+            if (!langBtn) return;
+            langBtn.addEventListener("click", () => {
+                const next = currentLang === "en" ? "ru" : "en";
+                updateLanguage(next);
+            });
+            updateLanguage(currentLang);
+        }
+
+        function initSquaresBackground() {
+            const canvas = document.createElement("canvas");
+            canvas.id = "squares-canvas";
+            document.body.prepend(canvas);
+
+            const ctx = canvas.getContext("2d");
+            let width, height;
+            const squareSize = 40;
+            const speed = 0.4;
+            let offset = 0;
+            let mouseX = -1000, mouseY = -1000;
+
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width * dpr;
+                canvas.height = height * dpr;
+                canvas.style.width = width + "px";
+                canvas.style.height = height + "px";
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                ctx.scale(dpr, dpr);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+
+            window.addEventListener("mousemove", (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                const borderColor = getComputedStyle(document.body).getPropertyValue("--squares-border").trim();
+
+                offset = (offset + speed) % squareSize;
+                ctx.strokeStyle = borderColor;
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = 0.4;
+
+                for (let x = -squareSize + offset; x < width; x += squareSize) {
+                    for (let y = -squareSize + offset; y < height; y += squareSize) {
+                        ctx.strokeRect(x, y, squareSize, squareSize);
+                        if (mouseX >= x && mouseX < x + squareSize && mouseY >= y && mouseY < y + squareSize) {
+                            ctx.globalAlpha = 0.2;
+                            ctx.fillStyle = "#0052FF";
+                            ctx.fillRect(x, y, squareSize, squareSize);
+                            ctx.globalAlpha = 0.4;
+                        }
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        function initSelectOverlay() {
+            const overlay = document.getElementById("select-overlay");
+            if (!overlay) return;
+
+            const closeBtn = document.getElementById("select-close");
+            const buttons = document.querySelectorAll(".select-service-btn");
+
+            const open = (event) => {
+                if (event) {
+                    event.preventDefault();
+                }
+                overlay.classList.add("active");
+                document.body.style.overflow = "hidden";
+            };
+
+            const close = () => {
+                overlay.classList.remove("active");
+                document.body.style.overflow = "";
+            };
+
+            buttons.forEach(btn => {
+                btn.addEventListener("click", open);
+            });
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    close();
+                });
+            }
+
+            const calModal = document.getElementById("cal-modal-overlay");
+            const calBtn = overlay.querySelector(".select-cal-btn");
+            if (calBtn && calModal) {
+                calBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    close();
+                    calModal.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                });
+            }
+
+            overlay.addEventListener("click", (e) => {
+                if (e.target === overlay) {
+                    close();
+                }
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && overlay.classList.contains("active")) {
+                    close();
+                }
+            });
+        }
+
+        function initCalModal() {
+            const calModal = document.getElementById("cal-modal-overlay");
+            const closeCal = document.getElementById("close-cal-button");
+            if (!calModal || !closeCal) return;
+            closeCal.addEventListener("click", () => {
+                calModal.classList.remove("active");
+                document.body.style.overflow = "";
+            });
+            calModal.addEventListener("click", (e) => {
+                if (e.target === calModal) {
+                    calModal.classList.remove("active");
+                    document.body.style.overflow = "";
+                }
+            });
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && calModal.classList.contains("active")) {
+                    calModal.classList.remove("active");
+                    document.body.style.overflow = "";
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initLanguage();
+            initSquaresBackground();
+            initSelectOverlay();
+            initCalModal();
+
+            gsap.from(".page-header", {
+                y: -20,
+                opacity: 0,
+                duration: 0.9,
+                ease: "power3.out"
+            });
+
+            gsap.from(".card", {
+                y: 60,
+                opacity: 0,
+                duration: 1.1,
+                ease: "expo.out",
+                stagger: 0.1
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "15min", { origin: "https://app.cal.com" });
+        Cal.ns["15min"]("inline", { elementOrSelector: "#my-cal-inline-15min", config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" }, calLink: "zodtech/15min" });
+        Cal.ns["15min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+    </script>
+</body>
+
+</html>
