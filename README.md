@@ -1,7 +1,5 @@
 # zodtech Website
 
-Этот проект был скачан с помощью Website Downloader Chrome Extension.
-
 ## Структура проекта
 
 ```
