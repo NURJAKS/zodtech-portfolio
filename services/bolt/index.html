@@ -4,7 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>Zodtech — Bolt Case Study</title>
+    <meta name="description"
+        content="Bolt: transaction-focused landing page. Fintech onboarding, trust, 20+ payment methods. Case study by Zodtech.">
+    <link rel="canonical" href="https://zodtech.kz/services/bolt/">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zodtech.kz/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://zodtech.kz/assets/favicon-48.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zodtech.kz/services/bolt/">
+    <meta property="og:title" content="Zodtech — Bolt Case Study">
+    <meta property="og:description" content="Bolt: fintech landing page. Onboarding, payments. Zodtech case study.">
+    <meta property="og:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Zodtech">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zodtech.kz/services/bolt/">
+    <meta name="twitter:title" content="Zodtech — Bolt Case Study">
+    <meta name="twitter:description" content="Bolt fintech landing. Zodtech case study.">
+    <meta name="twitter:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://zodtech.kz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://zodtech.kz/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bolt",
+          "item": "https://zodtech.kz/services/bolt/"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Fintech UI/UX & Automation",
+      "description": "Transaction-focused landing page and automated onboarding flow for fintech platforms.",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Zodtech",
+        "url": "https://zodtech.kz/"
+      },
+      "areaServed": "Worldwide"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -13,19 +73,20 @@
         /* ========== DESIGN TOKENS ========== */
         :root {
             --bg: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #6b7280;
+            --sidebar-bg: #ffffff;
+            --text: #000000;
+            --text-secondary: #545454;
+            --text-grey: rgba(0, 0, 0, 0.4);
             --accent: #0052FF;
             --accent-dim: rgba(0, 82, 255, 0.12);
-            --card-bg: rgba(255, 255, 255, 0.7);
+            --corner-color: #003EB2;
             --border: rgba(0, 0, 0, 0.06);
-            --corner-color: #0052FF;
+            --header-border: rgba(0, 0, 0, 0.1);
+            --lang-btn-border: rgba(0, 0, 0, 0.14);
             --logo-color: #000;
-            --side-art-color: rgba(0, 0, 0, 0.04);
             --squares-border: #deddda;
-            --footer-text: #9ca3af;
-            --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --shadow-media: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --footer-text: rgba(0, 0, 0, 0.3);
+            --shadow-media: 0 40px 100px rgba(0, 0, 0, 0.08);
         }
 
         /* ========== RESET ========== */
@@ -39,12 +100,12 @@
 
         /* ========== BASE ========== */
         body {
-            font-family: "Inter", -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 0.4s ease, color 0.4s ease;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ========== THREE-COLUMN LAYOUT: GRID SIDEBARS + WHITE CENTER ========== */
@@ -52,7 +113,7 @@
             position: fixed;
             top: 0;
             bottom: 0;
-            width: calc((100vw - 1000px) / 2);
+            width: calc((100vw - 1100px) / 2);
             z-index: 10;
             pointer-events: none;
             background-color: var(--bg);
@@ -74,7 +135,7 @@
         .page-center {
             position: relative;
             z-index: 20;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             min-height: 100vh;
             background: var(--bg);
@@ -105,7 +166,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             height: 56px;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
@@ -123,11 +184,6 @@
             gap: 10px;
             text-decoration: none;
             color: var(--text);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-header:hover {
-            transform: scale(1.05);
         }
 
         .logo-icon {
@@ -137,9 +193,10 @@
         }
 
         .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.6px;
+            font-family: "Inter", sans-serif !important;
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.6px !important;
         }
 
         .back-btn {
@@ -180,7 +237,7 @@
             height: 44px;
             border-radius: 12px;
             border: 1px solid var(--border);
-            background: var(--card-bg);
+            background: #ffffff;
             color: var(--text);
             font-family: "Inter", sans-serif;
             font-size: 13px;
@@ -211,20 +268,13 @@
         .hero {
             text-align: center;
             padding: 100px 0 80px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .hero-eyebrow {
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
 
         .hero-title {
-            font-size: clamp(36px, 6vw, 56px);
+            font-size: clamp(32px, 8vw, 42px);
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.05;
@@ -249,7 +299,7 @@
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--accent);
             letter-spacing: -0.5px;
@@ -266,8 +316,8 @@
         /* ========== MEDIA BLOCK (Rich Style) ========== */
         .media-block {
             position: relative;
-            margin: 40px auto 100px;
-            max-width: 880px;
+            margin: 32px auto 64px;
+            max-width: 900px;
             padding: 24px;
         }
 
@@ -292,58 +342,54 @@
             object-fit: cover;
         }
 
-        /* ========== CORNER ACCENTS ========== */
-        .media-block {
-            position: relative;
-            overflow: visible;
-        }
-
+        /* Large Corner Accents (Standard Style) */
         .media-block::before,
         .media-block::after,
-        .media-block .card-corners::before,
-        .media-block .card-corners::after {
+        .card-corners::before,
+        .card-corners::after {
             content: "";
             position: absolute;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #003EB2;
+            width: 32px;
+            height: 32px;
+            border: 4px solid #003EB2;
             z-index: 10;
             pointer-events: none;
         }
 
         .media-block::before {
-            top: 16px;
-            left: 16px;
+            top: 8px;
+            left: 8px;
             border-right: none;
             border-bottom: none;
         }
 
         .media-block::after {
-            top: 16px;
-            right: 16px;
+            top: 8px;
+            right: 8px;
             border-left: none;
             border-bottom: none;
         }
 
-        .media-block .card-corners::before {
-            bottom: 16px;
-            left: 16px;
+        .card-corners::before {
+            bottom: 8px;
+            left: 8px;
             border-right: none;
             border-top: none;
         }
 
-        .media-block .card-corners::after {
-            bottom: 16px;
-            right: 16px;
+        .card-corners::after {
+            bottom: 8px;
+            right: 8px;
             border-left: none;
             border-top: none;
         }
 
         .media-placeholder-text {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--text-grey);
             text-transform: uppercase;
             letter-spacing: 0.15em;
+            font-weight: 500;
         }
 
         /* ========== CORNER ACCENTS ========== */
@@ -395,8 +441,8 @@
 
         /* ========== CONTENT SECTIONS ========== */
         .content-section {
-            margin-bottom: 80px;
-            max-width: 800px;
+            margin-bottom: 44px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -418,9 +464,9 @@
             line-height: 1.2;
         }
 
-        .section-text {
+        .section-body {
             font-size: 16px;
-            line-height: 1.75;
+            line-height: 1.6;
             color: var(--text-secondary);
         }
 
@@ -452,7 +498,7 @@
         }
 
         .result-value {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             color: var(--accent);
             letter-spacing: -1px;
@@ -467,10 +513,10 @@
 
         /* ========== DIVIDER ========== */
         .divider {
+            display: none;
             border: none;
-            height: 1px;
-            background: var(--border);
-            margin: 48px 0;
+            height: 0;
+            margin: 0;
         }
 
         /* ========== FOOTER ========== */
@@ -491,7 +537,7 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1100px) {
             .case-sidebar {
-                display: none;
+                display: flex;
             }
 
             .page-center {
@@ -503,7 +549,7 @@
 
         @media (max-width: 1100px) {
             .case-sidebar {
-                display: none;
+                display: flex;
             }
 
             .page-center {
@@ -525,17 +571,29 @@
         }
 
         @media (max-width: 600px) {
+            .page-center {
+                padding: 0 20px;
+            }
+
             .central {
-                padding: 80px 16px 48px;
+                padding: 80px 20px 48px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero-title {
+                font-size: 32px;
             }
 
             .hero-stats {
-                gap: 24px;
+                gap: 20px;
             }
 
             .media-block {
-                margin: 0 -8px 40px;
-                padding: 14px;
+                margin: 0 -4px 40px;
+                padding: 24px;
             }
 
             .media-block::before {
@@ -563,7 +621,7 @@
             }
 
             .logo-header {
-                display: none;
+                display: flex;
             }
         }
     </style>
@@ -580,40 +638,25 @@
     <!-- ===== CENTRAL WHITE COLUMN: HEADER + CONTENT ===== -->
     <div class="page-center">
         <header class="site-header">
-            <a href="/services" class="back-btn">
+            <a href="/services" class="back-btn" aria-label="Back">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
-                <span data-i18n="back">Back</span>
             </a>
             <a href="/" class="logo-header">
-                <img src="../../LOGO.png" alt="Zodtech" class="logo-icon">
+                <img src="../../assets/LOGO.png" alt="Zodtech" class="logo-icon">
                 <div class="logo-text">Zodtech</div>
             </a>
             <button id="lang-switcher" class="lang-btn">RU</button>
         </header>
 
-        <main class="central">
+        <main>
 
             <!-- HERO -->
             <section class="hero">
-                <div class="hero-eyebrow" data-i18n="eyebrow">Automation</div>
                 <h1 class="hero-title" data-i18n="heroTitle">Bolt</h1>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat1Value">5min</div>
-                        <div class="stat-label" data-i18n="stat1Label">Onboarding</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat2Value">0.1%</div>
-                        <div class="stat-label" data-i18n="stat2Label">Churn</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat3Value">20+</div>
-                        <div class="stat-label" data-i18n="stat3Label">Methods</div>
-                    </div>
-                </div>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">Transaction-focused landing page</p>
             </section>
 
             <!-- MAIN MEDIA -->
@@ -624,67 +667,70 @@
                 </div>
             </div>
 
-            <!-- ABOUT -->
+            <!-- SUMMARY -->
             <section class="content-section">
-                <div class="section-label" data-i18n="aboutLabel">About</div>
-                <h2 class="section-title" data-i18n="aboutTitle">Transaction-focused landing page</h2>
-                <p class="section-text" data-i18n="aboutText">For Bolt, we created a clean, conversion-optimized landing
-                    page that focuses on core fintech value propositions: speed, security, and simplicity. The interface
-                    is
-                    designed to reduce friction and drive user sign-ups.</p>
+                <h2 class="section-heading" data-i18n="summaryHeading">About the client:</h2>
+                <div class="section-body">
+                    <p data-i18n="summaryText">Bolt is a major fintech brand focusing on fast and secure transaction
+                        services. They are known for their commitment to user experience and technological reliability
+                        in the financial sector.</p>
+                </div>
             </section>
 
             <hr class="divider">
 
-            <!-- TASK -->
+            <!-- WHAT WE DID -->
             <section class="content-section">
-                <div class="section-label" data-i18n="taskLabel">Task</div>
-                <h2 class="section-title" data-i18n="taskTitle">Simplifying financial tech</h2>
-                <p class="section-text" data-i18n="taskText">Bolt needed a way to explain complex financial services to
-                    a
-                    broad audience. Their goal was to decrease user onboarding time and increase the diversity of
-                    payment
-                    methods used on their platform.</p>
+                <h2 class="section-heading" data-i18n="processHeading">What we did:</h2>
+                <div class="section-body">
+                    <p data-i18n="processText">We conducted a deep analysis of Bolt's transaction flow and designed a
+                        modern, conversion-optimized landing page. The task was to simplify complex technical concepts
+                        into a user-friendly interface. We implemented a minimalist UI/UX design that highlights speed
+                        and security, using modular components for easy updates.</p>
+                </div>
             </section>
 
-            <hr class="divider">
-
-            <!-- SOLUTION -->
-            <section class="content-section">
-                <div class="section-label" data-i18n="solutionLabel">Solution</div>
-                <h2 class="section-title" data-i18n="solutionTitle">Minimalist UI/UX for finance</h2>
-                <p class="section-text" data-i18n="solutionText">We implemented a minimalist design system that uses
-                    white
-                    space and clear typography to guide users through the features. The technical architecture supports
-                    a
-                    modular approach, allowing Bolt to easily add or remove payment integration highlights.</p>
-            </section>
+            <!-- SECOND MEDIA BLOCK -->
+            <div class="media-block">
+                <div class="card-corners"></div>
+                <div class="media-frame">
+                    <span class="media-placeholder-text">UI Architecture & Flow</span>
+                </div>
+            </div>
 
             <hr class="divider">
 
             <!-- RESULTS -->
             <section class="content-section">
-                <div class="section-label" data-i18n="resultLabel">Results</div>
-                <h2 class="section-title" data-i18n="resultTitle">What we achieved</h2>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res1Value">5min</div>
-                        <div class="result-desc" data-i18n="res1Desc">Avg. onboarding time</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res2Value">0.1%</div>
-                        <div class="result-desc" data-i18n="res2Desc">Transaction failure</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res3Value">20+</div>
-                        <div class="result-desc" data-i18n="res3Desc">Payment types</div>
-                    </div>
+                <h2 class="section-heading" data-i18n="resultsHeading">Results:</h2>
+                <div class="section-body">
+                    <p data-i18n="resultsText">The new landing page significantly improved user onboarding and trust. By
+                        focusing on clarity and performance, we achieved measurable growth in user engagement and
+                        transaction reliability.</p>
+                    <ul class="tech-list">
+                        <li data-i18n="res1">Avg. onboarding time: 5min</li>
+                        <li data-i18n="res2">Transaction failure rate: 0.1%</li>
+                        <li data-i18n="res3">20+ supported payment methods</li>
+                    </ul>
                 </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- TECH STACK -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="techHeading">Tech Stack:</h2>
+                <ul class="tech-list">
+                    <li>HTML5 / CSS3</li>
+                    <li>GSAP Animation Library</li>
+                    <li>Vanilla JavaScript</li>
+                    <li>Figma Design System</li>
+                </ul>
             </section>
 
             <!-- FOOTER -->
             <footer class="case-footer">
-                <p class="footer-copy" data-i18n="footerCopy">© 2026 Zodtech. All rights reserved.</p>
+                <p class="footer-copy" data-i18n="footerCopy">© 2026 . All rights reserved.</p>
             </footer>
         </main>
     </div>
@@ -692,41 +738,34 @@
     <script>
         const translations = {
             "en": {
-                "eyebrow": "Fintech · Landing",
                 "heroTitle": "Bolt",
-                "stat1Value": "5min", "stat1Label": "Onboarding",
-                "stat2Value": "0.1%", "stat2Label": "Churn",
-                "stat3Value": "20+", "stat3Label": "Methods",
-                "aboutLabel": "About", "aboutTitle": "Transaction-focused landing page",
-                "aboutText": "For Bolt, we created a clean, conversion-optimized landing page that focuses on core fintech value propositions: speed, security, and simplicity. The interface is designed to reduce friction and drive user sign-ups.",
-                "taskLabel": "Task", "taskTitle": "Simplifying financial tech",
-                "taskText": "Bolt needed a way to explain complex financial services to a broad audience. Their goal was to decrease user onboarding time and increase the diversity of payment methods used on their platform.",
-                "solutionLabel": "Solution", "solutionTitle": "Minimalist UI/UX for finance",
-                "solutionText": "We implemented a minimalist design system that uses white space and clear typography to guide users through the features. The technical architecture supports a modular approach, allowing Bolt to easily add or remove payment integration highlights.",
-                "resultLabel": "Results", "resultTitle": "What we achieved",
-                "res1Value": "5min", "res1Desc": "Avg. onboarding time",
-                "res2Value": "0.1%", "res2Desc": "Transaction failure",
-                "res3Value": "20+", "res3Desc": "Payment types",
-                "footerCopy": "© 2026 Zodtech. All rights reserved."
+                "heroSubtitle": "Transaction-focused landing page",
+                "summaryHeading": "About the client:",
+                "summaryText": "Bolt is a major fintech brand focusing on fast and secure transaction services. They are known for their commitment to user experience and technological reliability in the financial sector.",
+                "processHeading": "What we did:",
+                "processText": "We conducted a deep analysis of Bolt's transaction flow and designed a modern, conversion-optimized landing page. The task was to simplify complex technical concepts into a user-friendly interface. We implemented a minimalist UI/UX design that highlights speed and security, using modular components for easy updates.",
+                "resultsHeading": "Results:",
+                "resultsText": "The new landing page significantly improved user onboarding and trust. By focusing on clarity and performance, we achieved measurable growth in user engagement and transaction reliability.",
+                "res1": "Avg. onboarding time: 5min",
+                "res2": "Transaction failure rate: 0.1%",
+                "res3": "20+ supported payment methods",
+                "techHeading": "Tech Stack:",
+                "footerCopy": "© 2026 . All rights reserved."
             },
             "ru": {
-                "back": "Назад",
-                "eyebrow": "Автоматизация",
                 "heroTitle": "Bolt",
-                "stat1Value": "5мин", "stat1Label": "Онбординг",
-                "stat2Value": "0.1%", "stat2Label": "Отток",
-                "stat3Value": "20+", "stat3Label": "Методов",
-                "aboutLabel": "О проекте", "aboutTitle": "Лендинг, ориентированный на транзакции",
-                "aboutText": "Мы разработали высокопроизводительный лендинг для Bolt — финтех-бренда, ориентированного на удобные транзакции. Целью было создание интерфейса, вызывающего доверие, который четко доносит ценность продукта.",
-                "taskLabel": "Задача", "taskTitle": "Упрощение финансовых технологий",
-                "taskText": "Bolt требовался способ объяснить сложные финансовые услуги широкой аудитории. Их целью было сократить время онбординга пользователей и увеличить разнообразие способов оплаты, используемых на их платформе.",
-                "solutionLabel": "Решение", "solutionTitle": "Минималистичный UI/UX для финансов",
-                "solutionText": "Мы внедрили минималистичную дизайн-систему, которая использует пустое пространство и четкую типографику для сопровождения пользователей по функциям. Техническая архитектура поддерживает модульный подход, позволяя Bolt легко добавлять или удалять блоки интеграции платежей.",
-                "resultLabel": "Результаты", "resultTitle": "Чего мы достигли",
-                "res1Value": "5мин", "res1Desc": "Средний онбординг",
-                "res2Value": "0.1%", "res2Desc": "Ошибок оплаты",
-                "res3Value": "20+", "res3Desc": "Видов платежей",
-                "footerCopy": "© 2026 Zodtech. Все права защищены."
+                "heroSubtitle": "Лендинг, ориентированный на транзакции",
+                "summaryHeading": "О клиенте:",
+                "summaryText": "Bolt — крупный финтех-бренд, ориентированный на быстрые и безопасные транзакции. Компания известна своим вниманием к пользовательскому опыту и технологической надежностью в финансовом секторе.",
+                "processHeading": "Что мы сделали:",
+                "processText": "Мы провели глубокий анализ процесса транзакций Bolt и разработали современный лендинг, оптимизированный для конверсии. Задача заключалась в упрощении сложных технических концепций до интуитивно понятного интерфейса. Мы внедрили минималистичный UI/UX дизайн, который подчеркивает скорость и безопасность.",
+                "resultsHeading": "Результаты:",
+                "resultsText": "Новый лендинг значительно улучшил процесс онбординга пользователей и повысил доверие к бренду. Сосредоточив внимание на ясности и производительности, мы добились измеримого роста вовлеченности пользователей.",
+                "res1": "Средний онбординг: 5 мин",
+                "res2": "Уровень ошибок оплаты: 0.1%",
+                "res3": "20+ поддерживаемых платежных систем",
+                "techHeading": "Стек технологий:",
+                "footerCopy": "© 2026 . Все права защищены."
             }
         };
 

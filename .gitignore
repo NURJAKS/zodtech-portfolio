@@ -2,17 +2,42 @@
 .DS_Store
 Thumbs.db
 
+# Linux / misc
+*~
+*.swp
+*.swo
+
 # Editor files
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
+*.code-workspace
 
 # Logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Temporary files
 *.tmp
 *.temp
+
+# Build / dependencies
+node_modules/
+dist/
+build/
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+.python-version
+.venv/
+venv/
+
+# GitHub Pages / Jekyll
+_site/
+
+# Cursor
+.cursor/

@@ -4,7 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>Zodtech — ListenLabs Case Study</title>
+    <meta name="description"
+        content="ListenLabs: high-conversion marketing site. AI audio platform, 150% conversion increase, 98 Lighthouse SEO. Zodtech.">
+    <link rel="canonical" href="https://zodtech.kz/services/listenlabs/">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zodtech.kz/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://zodtech.kz/assets/favicon-48.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zodtech.kz/services/listenlabs/">
+    <meta property="og:title" content="Zodtech — ListenLabs Case Study">
+    <meta property="og:description" content="ListenLabs: high-conversion marketing site. Zodtech case study.">
+    <meta property="og:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Zodtech">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zodtech.kz/services/listenlabs/">
+    <meta name="twitter:title" content="Zodtech — ListenLabs Case Study">
+    <meta name="twitter:description" content="ListenLabs marketing site. Zodtech case study.">
+    <meta name="twitter:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://zodtech.kz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://zodtech.kz/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Listenlabs",
+          "item": "https://zodtech.kz/services/listenlabs/"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Audio Data Analysis & Transcription",
+      "description": "AI-powered audio transcription and semantic analysis for research and business intelligence.",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Zodtech",
+        "url": "https://zodtech.kz/"
+      },
+      "areaServed": "Worldwide"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -13,19 +73,20 @@
         /* ========== DESIGN TOKENS ========== */
         :root {
             --bg: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #6b7280;
+            --sidebar-bg: #ffffff;
+            --text: #000000;
+            --text-secondary: #545454;
+            --text-grey: rgba(0, 0, 0, 0.4);
             --accent: #0052FF;
             --accent-dim: rgba(0, 82, 255, 0.12);
-            --card-bg: rgba(255, 255, 255, 0.7);
+            --corner-color: #003EB2;
             --border: rgba(0, 0, 0, 0.06);
-            --corner-color: #0052FF;
+            --header-border: rgba(0, 0, 0, 0.1);
+            --lang-btn-border: rgba(0, 0, 0, 0.14);
             --logo-color: #000;
-            --side-art-color: rgba(0, 0, 0, 0.04);
             --squares-border: #deddda;
-            --footer-text: #9ca3af;
-            --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --shadow-media: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --footer-text: rgba(0, 0, 0, 0.3);
+            --shadow-media: 0 40px 100px rgba(0, 0, 0, 0.08);
         }
 
         /* ========== RESET ========== */
@@ -39,12 +100,12 @@
 
         /* ========== BASE ========== */
         body {
-            font-family: "Inter", -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 0.4s ease, color 0.4s ease;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ========== THREE-COLUMN LAYOUT: GRID SIDEBARS + WHITE CENTER ========== */
@@ -52,7 +113,7 @@
             position: fixed;
             top: 0;
             bottom: 0;
-            width: calc((100vw - 1000px) / 2);
+            width: calc((100vw - 1100px) / 2);
             z-index: 10;
             pointer-events: none;
             background-color: var(--bg);
@@ -74,7 +135,7 @@
         .page-center {
             position: relative;
             z-index: 20;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             min-height: 100vh;
             background: var(--bg);
@@ -105,7 +166,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             height: 56px;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
@@ -123,11 +184,6 @@
             gap: 10px;
             text-decoration: none;
             color: var(--text);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-header:hover {
-            transform: scale(1.05);
         }
 
         .logo-icon {
@@ -137,9 +193,10 @@
         }
 
         .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.6px;
+            font-family: "Inter", sans-serif !important;
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.6px !important;
         }
 
         .back-btn {
@@ -180,7 +237,7 @@
             height: 44px;
             border-radius: 12px;
             border: 1px solid var(--border);
-            background: var(--card-bg);
+            background: #ffffff;
             color: var(--text);
             font-family: "Inter", sans-serif;
             font-size: 13px;
@@ -210,30 +267,33 @@
         /* ========== HERO ========== */
         .hero {
             text-align: center;
-            padding: 100px 0 80px;
-            max-width: 800px;
+            padding: 150px 0 40px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .hero-eyebrow {
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
 
         .hero-title {
-            font-size: clamp(36px, 6vw, 56px);
+            font-size: clamp(36px, 8vw, 72px);
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.05;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             background: linear-gradient(90deg, #1a1a1a 0%, #213c6a 45%, #1765c0 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
         }
 
         .hero-stats {
@@ -249,7 +309,7 @@
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--accent);
             letter-spacing: -0.5px;
@@ -266,8 +326,8 @@
         /* ========== MEDIA BLOCK (Rich Style) ========== */
         .media-block {
             position: relative;
-            margin: 40px auto 100px;
-            max-width: 880px;
+            margin: 32px auto 64px;
+            max-width: 900px;
             padding: 24px;
         }
 
@@ -292,58 +352,54 @@
             object-fit: cover;
         }
 
-        /* ========== CORNER ACCENTS ========== */
-        .media-block {
-            position: relative;
-            overflow: visible;
-        }
-
+        /* Large Corner Accents (Standard Style) */
         .media-block::before,
         .media-block::after,
-        .media-block .card-corners::before,
-        .media-block .card-corners::after {
+        .card-corners::before,
+        .card-corners::after {
             content: "";
             position: absolute;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #003EB2;
+            width: 32px;
+            height: 32px;
+            border: 4px solid #003EB2;
             z-index: 10;
             pointer-events: none;
         }
 
         .media-block::before {
-            top: 16px;
-            left: 16px;
+            top: 8px;
+            left: 8px;
             border-right: none;
             border-bottom: none;
         }
 
         .media-block::after {
-            top: 16px;
-            right: 16px;
+            top: 8px;
+            right: 8px;
             border-left: none;
             border-bottom: none;
         }
 
-        .media-block .card-corners::before {
-            bottom: 16px;
-            left: 16px;
+        .card-corners::before {
+            bottom: 8px;
+            left: 8px;
             border-right: none;
             border-top: none;
         }
 
-        .media-block .card-corners::after {
-            bottom: 16px;
-            right: 16px;
+        .card-corners::after {
+            bottom: 8px;
+            right: 8px;
             border-left: none;
             border-top: none;
         }
 
         .media-placeholder-text {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--text-grey);
             text-transform: uppercase;
             letter-spacing: 0.15em;
+            font-weight: 500;
         }
 
         /* ========== CORNER ACCENTS ========== */
@@ -395,10 +451,19 @@
 
         /* ========== TEXT SECTIONS ========== */
         .content-section {
-            margin-bottom: 80px;
-            max-width: 800px;
+            margin-bottom: 44px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .section-heading {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: var(--text-secondary);
         }
 
         .section-label {
@@ -408,24 +473,38 @@
             color: var(--accent);
             margin-bottom: 10px;
             font-weight: 700;
+            display: block;
         }
 
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .section-text {
+        .section-body {
             font-size: 16px;
-            line-height: 1.75;
+            line-height: 1.6;
             color: var(--text-secondary);
         }
 
-        .section-text+.section-text {
-            margin-top: 16px;
+        .section-body p {
+            margin-bottom: 24px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+
+        .tech-list li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .tech-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-secondary);
         }
 
         /* ========== RESULTS GRID ========== */
@@ -452,7 +531,7 @@
         }
 
         .result-value {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             color: var(--accent);
             letter-spacing: -1px;
@@ -467,10 +546,10 @@
 
         /* ========== DIVIDER ========== */
         .divider {
+            display: none;
             border: none;
-            height: 1px;
-            background: var(--border);
-            margin: 48px 0;
+            height: 0;
+            margin: 0;
         }
 
         /* ========== FOOTER ========== */
@@ -491,13 +570,13 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 900px) {
             .case-sidebar {
-                display: none;
+                display: flex;
             }
         }
 
         @media (max-width: 1100px) {
             .case-sidebar {
-                display: none;
+                display: flex;
             }
 
             .page-center {
@@ -519,17 +598,29 @@
         }
 
         @media (max-width: 600px) {
+            .page-center {
+                padding: 0 20px;
+            }
+
             .central {
-                padding: 80px 16px 48px;
+                padding: 80px 20px 48px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero-title {
+                font-size: 32px;
             }
 
             .hero-stats {
-                gap: 24px;
+                gap: 20px;
             }
 
             .media-block {
-                margin: 0 -8px 40px;
-                padding: 14px;
+                margin: 0 -4px 40px;
+                padding: 24px;
             }
 
             .media-block::before {
@@ -557,7 +648,7 @@
             }
 
             .logo-header {
-                display: none;
+                display: flex;
             }
         }
     </style>
@@ -574,40 +665,25 @@
     <!-- ===== CENTRAL WHITE COLUMN: HEADER + CONTENT ===== -->
     <div class="page-center">
         <header class="site-header">
-            <a href="/services" class="back-btn">
+            <a href="/services" class="back-btn" aria-label="Back">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
-                <span data-i18n="back">Back</span>
             </a>
             <a href="/" class="logo-header">
-                <img src="../../LOGO.png" alt="Zodtech" class="logo-icon">
+                <img src="../../assets/LOGO.png" alt="Zodtech" class="logo-icon">
                 <div class="logo-text">Zodtech</div>
             </a>
             <button id="lang-switcher" class="lang-btn">RU</button>
         </header>
 
-        <main class="central">
+        <main>
 
             <!-- HERO -->
             <section class="hero">
-                <div class="hero-eyebrow" data-i18n="eyebrow">Automation</div>
                 <h1 class="hero-title" data-i18n="heroTitle">ListenLabs</h1>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat1Value">+150%</div>
-                        <div class="stat-label" data-i18n="stat1Label">Conv. Rate</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat2Value">1.8s</div>
-                        <div class="stat-label" data-i18n="stat2Label">LCP</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat3Value">98</div>
-                        <div class="stat-label" data-i18n="stat3Label">SEO Score</div>
-                    </div>
-                </div>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">High-conversion marketing site</p>
             </section>
 
             <!-- MAIN MEDIA -->
@@ -618,65 +694,70 @@
                 </div>
             </div>
 
-            <!-- ABOUT -->
+            <!-- SUMMARY -->
             <section class="content-section">
-                <div class="section-label" data-i18n="aboutLabel">About</div>
-                <h2 class="section-title" data-i18n="aboutTitle">High-conversion marketing site</h2>
-                <p class="section-text" data-i18n="aboutText">For ListenLabs, we developed a fast-loading marketing site
-                    designed to convert cold traffic into demo bookings. The site features smooth GSAP animations and a
-                    pixel-perfect mobile experience.</p>
+                <h2 class="section-heading" data-i18n="summaryHeading">About the client:</h2>
+                <div class="section-body">
+                    <p data-i18n="summaryText">ListenLabs is an AI audio analysis platform that helps businesses
+                        understand their customers better through deep listening technology. They specialize in
+                        transforming raw audio data into actionable insights for product and marketing teams.</p>
+                </div>
             </section>
 
             <hr class="divider">
 
-            <!-- TASK -->
+            <!-- WHAT WE DID -->
             <section class="content-section">
-                <div class="section-label" data-i18n="taskLabel">Task</div>
-                <h2 class="section-title" data-i18n="taskTitle">Capturing the SaaS market</h2>
-                <p class="section-text" data-i18n="taskText">ListenLabs needed a web presence that matched the quality
-                    of
-                    their audio-analysis product. Their old site was slow, not mobile-responsive, and failed to
-                    communicate
-                    their value proposition effectively.</p>
+                <h2 class="section-heading" data-i18n="processHeading">What we did:</h2>
+                <div class="section-body">
+                    <p data-i18n="processText">We developed a high-conversion marketing site designed to capture the
+                        SaaS market. We built a performance-first architecture using static site generation and modern
+                        best practices for speed and SEO. The site features smooth GSAP animations and a pixel-perfect
+                        mobile experience to effectively communicate their value proposition.</p>
+                </div>
             </section>
 
-            <hr class="divider">
-
-            <!-- SOLUTION -->
-            <section class="content-section">
-                <div class="section-label" data-i18n="solutionLabel">Solution</div>
-                <h2 class="section-title" data-i18n="solutionTitle">Performance-first architecture</h2>
-                <p class="section-text" data-i18n="solutionText">We built a static site using modern best practices for
-                    speed and SEO. By optimizing asset delivery and implementing lazy-loading, we achieved a
-                    sub-2-second
-                    Largest Contentful Paint (LCP) and a nearly perfect Lighthouse score.</p>
-            </section>
+            <!-- SECOND MEDIA BLOCK -->
+            <div class="media-block">
+                <div class="card-corners"></div>
+                <div class="media-frame">
+                    <span class="media-placeholder-text">Performance-First Site Architecture</span>
+                </div>
+            </div>
 
             <hr class="divider">
 
             <!-- RESULTS -->
             <section class="content-section">
-                <div class="section-label" data-i18n="resultLabel">Results</div>
-                <h2 class="section-title" data-i18n="resultTitle">What we achieved</h2>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res1Value">+150%</div>
-                        <div class="result-desc" data-i18n="res1Desc">Conversion rate increase</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res2Value">1.8s</div>
-                        <div class="result-desc" data-i18n="res2Desc">Page load speed</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res3Value">98</div>
-                        <div class="result-desc" data-i18n="res3Desc">SEO audit score</div>
-                    </div>
+                <h2 class="section-heading" data-i18n="resultsHeading">Results:</h2>
+                <div class="section-body">
+                    <p data-i18n="resultsText">By optimizing asset delivery and implementing lazy-loading, we achieved
+                        sub-2-second load times and a nearly perfect Lighthouse score. The new web presence led to a
+                        massive increase in conversion rates and demo bookings.</p>
+                    <ul class="tech-list">
+                        <li data-i18n="res1">150% increase in conversion rate</li>
+                        <li data-i18n="res2">1.8s page load speed (LCP)</li>
+                        <li data-i18n="res3">98/100 Lighthouse SEO score</li>
+                    </ul>
                 </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- TECH STACK -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="techHeading">Tech Stack:</h2>
+                <ul class="tech-list">
+                    <li>Static Site Generation</li>
+                    <li>GSAP Animation Engine</li>
+                    <li>SEO Optimization Pipeline</li>
+                    <li>Global Asset Delivery</li>
+                </ul>
             </section>
 
             <!-- FOOTER -->
             <footer class="case-footer">
-                <p class="footer-copy" data-i18n="footerCopy">© 2026 Zodtech. All rights reserved.</p>
+                <p class="footer-copy" data-i18n="footerCopy">© 2026 . All rights reserved.</p>
             </footer>
         </main>
     </div>
@@ -684,40 +765,34 @@
     <script>
         const translations = {
             "en": {
-                "eyebrow": "Automation",
                 "heroTitle": "ListenLabs",
-                "stat1Value": "+150%", "stat1Label": "Conv. Rate",
-                "stat2Value": "1.8s", "stat2Label": "LCP",
-                "stat3Value": "98", "stat3Label": "SEO Score",
-                "aboutLabel": "About", "aboutTitle": "High-conversion marketing site",
-                "aboutText": "For ListenLabs, we developed a fast-loading marketing site designed to convert cold traffic into demo bookings. The site features smooth GSAP animations and a pixel-perfect mobile experience.",
-                "taskLabel": "Task", "taskTitle": "Capturing the SaaS market",
-                "taskText": "ListenLabs needed a web presence that matched the quality of their audio-analysis product. Their old site was slow, not mobile-responsive, and failed to communicate their value proposition effectively.",
-                "solutionLabel": "Solution", "solutionTitle": "Performance-first architecture",
-                "solutionText": "We built a static site using modern best practices for speed and SEO. By optimizing asset delivery and implementing lazy-loading, we achieved a sub-2-second Largest Contentful Paint (LCP) and a nearly perfect Lighthouse score.",
-                "resultLabel": "Results", "resultTitle": "What we achieved",
-                "res1Value": "+150%", "res1Desc": "Conversion rate increase",
-                "res2Value": "1.8s", "res2Desc": "Page load speed",
-                "res3Value": "98", "res3Desc": "SEO audit score",
-                "footerCopy": "© 2026 Zodtech. All rights reserved."
+                "heroSubtitle": "High-conversion marketing site",
+                "summaryHeading": "About the client:",
+                "summaryText": "ListenLabs is an AI audio analysis platform that helps businesses understand their customers better through deep listening technology. They specialize in transforming raw audio data into actionable insights for product and marketing teams.",
+                "processHeading": "What we did:",
+                "processText": "We developed a high-conversion marketing site designed to capture the SaaS market. We built a performance-first architecture using static site generation and modern best practices for speed and SEO. The site features smooth GSAP animations and a pixel-perfect mobile experience to effectively communicate their value proposition.",
+                "resultsHeading": "Results:",
+                "resultsText": "By optimizing asset delivery and implementing lazy-loading, we achieved sub-2-second load times and a nearly perfect Lighthouse score. The new web presence led to a massive increase in conversion rates and demo bookings.",
+                "res1": "150% increase in conversion rate",
+                "res2": "1.8s page load speed (LCP)",
+                "res3": "98/100 Lighthouse SEO score",
+                "techHeading": "Tech Stack:",
+                "footerCopy": "© 2026 . All rights reserved."
             },
             "ru": {
-                "eyebrow": "Автоматизация",
                 "heroTitle": "ListenLabs",
-                "stat1Value": "+150%", "stat1Label": "Конверсия",
-                "stat2Value": "1.8с", "stat2Label": "LCP",
-                "stat3Value": "98", "stat3Label": "SEO Оценка",
-                "aboutLabel": "О проекте", "aboutTitle": "Высококонверсионный сайт",
-                "aboutText": "Для ListenLabs мы разработали быстрый маркетинговый сайт, предназначенный для превращения холодного трафика в бронирования демо. Сайт отличается плавной анимацией GSAP и пиксельно выверенным мобильным интерфейсом.",
-                "taskLabel": "Задача", "taskTitle": "Завоевание рынка SaaS",
-                "taskText": "ListenLabs требовалось веб-присутствие, соответствующее качеству их продукта для аудиоанализа. Старый сайт был медленным, неадаптивным и неэффективно передавал их ценностное предложение.",
-                "solutionLabel": "Решение", "solutionTitle": "Архитектура с приоритетом скорости",
-                "solutionText": "Мы построили статический сайт, используя современные лучшие практики для скорости и SEO. Оптимизировав доставку ресурсов и внедрив ленивую загрузку, мы достигли LCP менее 2 секунд и почти идеального балла Lighthouse.",
-                "resultLabel": "Результаты", "resultTitle": "Чего мы достигли",
-                "res1Value": "+150%", "res1Desc": "Рост конверсии",
-                "res2Value": "1.8с", "res2Desc": "Скорость загрузки",
-                "res3Value": "98", "res3Desc": "Оценка SEO",
-                "footerCopy": "© 2026 Zodtech. Все права защищены."
+                "heroSubtitle": "Высококонверсионный сайт",
+                "summaryHeading": "О клиенте:",
+                "summaryText": "ListenLabs — это платформа аудиоанализа на базе ИИ, которая помогает компаниям лучше понимать своих клиентов с помощью технологий «глубокого прослушивания». Они специализируются на преобразовании необработанных аудиоданных в полезные инсайты.",
+                "processHeading": "Что мы сделали:",
+                "processText": "Мы разработали маркетинговый сайт с высокой конверсией, ориентированный на рынок SaaS. Мы построили архитектуру, ориентированную на производительность, используя генерацию статических сайтов и современные лучшие практики. Сайт отличается плавной анимацией GSAP и отличным мобильным интерфейсом.",
+                "resultsHeading": "Результаты:",
+                "resultsText": "Оптимизировав доставку ресурсов и внедрив ленивую загрузку, мы достигли времени загрузки менее 2 секунд и почти идеального балла Lighthouse. Новый сайт привел к значительному росту конверсии и бронирований демо.",
+                "res1": "Рост конверсии на 150%",
+                "res2": "Загрузка страницы всего за 1.8с (LCP)",
+                "res3": "98/100 оценка SEO в Lighthouse",
+                "techHeading": "Стек технологий:",
+                "footerCopy": "© 2026 . Все права защищены."
             }
         };
 

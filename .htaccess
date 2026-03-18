@@ -1,15 +1,62 @@
-# Redirect old /projects/ URLs to /services/ (e.g. /projects/clickup -> /services/clickup)
+# ===========================
+# Zodtech: production hardening
+# ===========================
+
+# ---- Canonical redirects (HTTPS + no-www) ----
 RewriteEngine On
+
+# Redirect www -> apex (preserve HTTPS if already on)
+RewriteCond %{HTTP_HOST} ^www\.zodtech\.kz$ [NC]
+RewriteRule ^ https://zodtech.kz%{REQUEST_URI} [R=301,L]
+
+# Redirect HTTP -> HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ---- Legacy redirects ----
+# Redirect old /projects/ URLs to /services/ (e.g. /projects/clickup -> /services/clickup)
 RewriteRule ^projects/(.*)$ /services/$1 [R=301,L]
 
-# Optional: if using Apache and directory indexes are disabled,
-# uncomment below to serve index.html for directory requests.
-# DirectoryIndex index.html
+# Redirect renamed case: /services/clickup -> /services/crm-sales-automation
+RewriteRule ^services/clickup/?$ /services/crm-sales-automation/ [R=301,L]
 
-# Optional: rewrite clean URLs (no .html) to .html for legacy file-based setup.
-# Not needed when using folder structure (e.g. portfolio/index.html, services/index.html).
-# RewriteEngine On
-# RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule ^([^/.]+)/?$ $1.html [NC,L]
-# RewriteRule ^case-study/([^/.]+)/?$ case-study/$1.html [NC,L]
+# ---- Disable directory listings ----
+Options -Indexes
+
+# ---- Security headers (best-effort; CSP omitted due to inline scripts/styles) ----
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), payment=(), camera=(), microphone=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ---- Compression ----
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# ---- Cache static assets aggressively ----
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 hour"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType image/png "access plus 365 days"
+    ExpiresByType image/jpeg "access plus 365 days"
+    ExpiresByType image/webp "access plus 365 days"
+    ExpiresByType image/gif "access plus 365 days"
+    ExpiresByType application/pdf "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(?:css|js|png|jpg|jpeg|webp|gif|svg|ico|woff2?)$">
+        Header always set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(?:html)$">
+        Header always set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>

@@ -4,7 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zodtech - Our Services</title>
+    <meta name="robots" content="index, follow">
+    <!-- Yandex: <meta name="yandex-verification" content="..."> -->
+    <!-- Bing: <meta name="msvalidate.01" content="..."> -->
+    <title>Case studies: AI &amp; business automation | Zodtech</title>
+    <meta name="description"
+        content="Case studies: AI and business process automation for enterprises and SMB. Zodtech Kazakhstan.">
+    <meta name="keywords"
+        content="automation case studies, business automation, AI for business, Zodtech, Zodtek, Zotech">
+    <link rel="canonical" href="https://zodtech.kz/services/">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zodtech.kz/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://zodtech.kz/assets/favicon-48.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zodtech.kz/services/">
+    <meta property="og:title" content="Case studies: AI &amp; business automation | Zodtech">
+    <meta property="og:description"
+        content="Case studies: AI and business process automation for enterprises and SMB. Zodtech Kazakhstan.">
+    <meta property="og:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Zodtech">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zodtech.kz/services/">
+    <meta name="twitter:title" content="Case studies: AI &amp; business automation | Zodtech">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://zodtech.kz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://zodtech.kz/services/"
+        }
+      ]
+    }
+    </script>
+    <meta name="twitter:description"
+        content="Case studies: AI and business process automation for enterprises and SMB. Zodtech Kazakhstan.">
+    <meta name="twitter:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -126,6 +172,10 @@
             }
         }
 
+        html {
+            scrollbar-gutter: stable;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -175,10 +225,9 @@
         .site-header {
             position: fixed;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
             width: 100%;
-            max-width: 1000px;
             height: 56px;
             background: rgba(255, 255, 255, 0.8);
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -188,6 +237,67 @@
             justify-content: center;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
+        }
+
+        .site-header .logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--logo-text-color);
+        }
+
+        .site-header .logo-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .site-header .logo-text {
+            font-family: "Inter", sans-serif !important;
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            color: var(--logo-text-color) !important;
+            letter-spacing: -0.6px !important;
+        }
+
+        .site-header .back-btn {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            text-decoration: none;
+            color: #000000;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .site-header .back-btn:hover {
+            transform: translateY(-50%) translateX(-2px);
+        }
+
+        .site-header .lang-btn {
+            position: absolute !important;
+            right: 16px !important;
+            top: 50% !important;
+            transform: translateY(-50%);
+        }
+
+        .site-header .lang-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .site-header .lang-btn:active {
+            transform: translateY(-50%) scale(0.95);
         }
 
         .container {
@@ -210,11 +320,6 @@
             text-decoration: none;
             color: inherit;
             margin-bottom: 48px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
         }
 
         .logo-icon {
@@ -268,7 +373,7 @@
             background: var(--card-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-radius: 28px;
+            border-radius: 0;
             border: 1px solid #f0f0f0;
             box-shadow: 0 32px 64px rgba(0, 0, 0, 0.04);
             padding: 24px 24px 28px;
@@ -279,49 +384,45 @@
             margin-right: auto;
         }
 
-        /* Sharp L-shaped Corner Brackets */
-        .case-card::before,
-        .case-card::after,
-        .case-card .card-corners::before,
-        .case-card .card-corners::after {
+        /* Sharp L-shaped Corner Brackets (Outside Image) */
+        .case-media-placeholder::before,
+        .case-media-placeholder::after,
+        .case-media-placeholder .card-corners::before,
+        .case-media-placeholder .card-corners::after {
             content: "";
             position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #003EB2;
-            z-index: 3;
+            width: 13px;
+            height: 13px;
+            border: 4px solid #003EB2;
+            z-index: 10; /* Ensure it's above everything */
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
 
-        /* Top Left */
-        .case-card::before {
-            top: -2px;
-            left: -2px;
+        .case-media-placeholder::before {
+            top: -12px;
+            left: -12px;
             border-right: none;
             border-bottom: none;
         }
 
-        /* Top Right */
-        .case-card::after {
-            top: -2px;
-            right: -2px;
+        .case-media-placeholder::after {
+            top: -12px;
+            right: -12px;
             border-left: none;
             border-bottom: none;
         }
 
-        /* Bottom Left (using a child helper since we only have 2 pseudos) */
-        .case-card .card-corners::before {
-            bottom: -2px;
-            left: -2px;
+        .case-media-placeholder .card-corners::before {
+            bottom: -12px;
+            left: -12px;
             border-right: none;
             border-top: none;
         }
 
-        /* Bottom Right */
-        .case-card .card-corners::after {
-            bottom: -2px;
-            right: -2px;
+        .case-media-placeholder .card-corners::after {
+            bottom: -12px;
+            right: -12px;
             border-left: none;
             border-top: none;
         }
@@ -349,7 +450,7 @@
             text-transform: uppercase;
             transform: translateY(100%);
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 0 0 18px 18px;
+            border-radius: 0;
         }
 
         .case-card:hover .case-view-overlay {
@@ -358,13 +459,27 @@
 
         .case-media-placeholder {
             position: relative;
+            width: 100%;
+            margin-bottom: 30px; /* Increased further for -12px offset */
+        }
+
+        .case-media-inner {
+            position: relative;
             overflow: hidden;
             width: 100%;
-            border-radius: 18px;
+            border-radius: 0;
             border: 1px dashed rgba(0, 0, 0, 0.08);
             background: linear-gradient(135deg, rgba(0, 82, 255, 0.02), rgba(0, 82, 255, 0.06));
             aspect-ratio: 16 / 9;
-            margin-bottom: 18px;
+        }
+
+        .case-media-placeholder .case-card-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .case-title {
@@ -704,55 +819,13 @@
             margin-bottom: 8px;
         }
 
-        .top-left-logo {
-            position: absolute !important;
-            left: 50% !important;
-            top: 50% !important;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--logo-text-color);
-            z-index: 1;
-            transition: transform 0.3s ease;
-        }
-
-        .top-left-logo:hover {
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-
-        .top-left-logo .logo-icon {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        .top-left-logo .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.6px;
-        }
-
-        @media (max-width: 768px) {
-            .top-left-logo {
-                display: none !important;
-            }
-        }
-
         .lang-btn {
-            position: absolute !important;
-            right: 16px !important;
-            top: 50% !important;
-            transform: translateY(-50%);
             width: 44px;
             height: 44px;
             border-radius: 12px;
             border: 1px solid var(--lang-btn-border);
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            color: var(--text-color);
+            background: var(--lang-btn-bg);
+            color: var(--lang-btn-text);
             font-family: "Inter", sans-serif;
             font-size: 13px;
             font-weight: 700;
@@ -762,8 +835,9 @@
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             text-transform: uppercase;
+            outline: none;
         }
 
         .header-book-btn {
@@ -790,9 +864,8 @@
         }
 
         .lang-btn:hover {
-            transform: translateY(-50%) translateY(-2px);
             background: var(--lang-btn-hover-bg);
-            box-shadow: var(--card-shadow-hover);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 992px) {
@@ -1079,8 +1152,14 @@
     <div class="depth-layer"></div>
 
     <header class="site-header">
-        <a href="/" class="top-left-logo">
-            <img src="../LOGO.png" alt="zodtech Logo" class="logo-icon">
+        <a href="/" class="back-btn" aria-label="Back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+            </svg>
+        </a>
+        <a href="/" class="logo">
+            <img src="../assets/LOGO.png" alt="zodtech Logo" class="logo-icon">
             <div class="logo-text">Zodtech</div>
         </a>
         <button id="lang-switcher" class="lang-btn">RU</button>
@@ -1091,7 +1170,7 @@
     <div class="container">
         <div class="header">
             <h1 class="title"><span id="category-title-main" class="title-main"
-                    data-i18n="automationTitleMain">TopCases</span><span class="title-year">2026</span></h1>
+                    data-i18n="automationTitleMain">TopCases</span> <span class="title-year">2026</span></h1>
         </div>
 
         <div class="cases-column" id="cases-grid">
@@ -1104,12 +1183,12 @@
                 <button class="portfolio-switch-btn" data-category="automation"
                     data-i18n="automation">Automation</button>
                 <button class="portfolio-switch-btn" data-category="web" data-i18n="web">Web & Platforms</button>
-                <button class="portfolio-switch-btn" data-category="ai" data-i18n="ai">AI Assistants</button>
+                <!-- <button class="portfolio-switch-btn" data-category="ai" data-i18n="ai">AI Assistants</button> -->
             </div>
         </div>
         <footer
             style="text-align:center;padding:40px 24px 24px;margin-top:32px;border-top:1px solid rgba(0,0,0,0.06);color:#9ca3af;font-size:13px;">
-            <p class="footer-copy" data-i18n="footerCopy">© 2026 Zodtech. All rights reserved.</p>
+            <p class="footer-copy" data-i18n="footerCopy">© 2026 . All rights reserved.</p>
         </footer>
     </div>
 
@@ -1118,29 +1197,29 @@
             <button class="select-close" id="select-close" aria-label="Close">&times;</button>
             <div class="select-grid">
                 <div class="select-card">
-                    <h3 class="select-card-title" data-i18n="discussTaskTitle">Обсудить задачу</h3>
+                    <h3 class="select-card-title" data-i18n="discussTaskTitle">Discuss the task</h3>
                     <p class="select-card-text" data-i18n="discussTaskText">
-                        Напишите нам в удобном мессенджере — обсудим задачу и подберём решение.
+                        Write to us in a convenient messenger — we will discuss your task and suggest a solution.
                     </p>
                     <div class="select-card-icons">
                         <a href="https://wa.me/77002174701" target="_blank" rel="noopener noreferrer"
-                            class="select-icon-link" aria-label="WhatsApp"><img src="../whatsapp.png" alt="WhatsApp"
-                                class="select-icon-img"></a>
+                            class="select-icon-link" aria-label="WhatsApp"><img src="../assets/whatsapp.png"
+                                alt="WhatsApp" class="select-icon-img"></a>
                         <a href="https://www.instagram.com/nurjaks_89?igsh=MWg3dDVlZ2I2cGpkbA==" target="_blank"
                             rel="noopener noreferrer" class="select-icon-link" aria-label="Instagram"><img
-                                src="../instagram.png" alt="Instagram" class="select-icon-img"></a>
+                                src="../assets/instagram.png" alt="Instagram" class="select-icon-img"></a>
                         <a href="https://x.com/NAbildaev60153" target="_blank" rel="noopener noreferrer"
                             class="select-icon-link" aria-label="X"><span class="select-icon x">X</span><span
                                 class="select-icon-label keep-label" data-i18n="socialX">(twitter)</span></a>
                     </div>
                 </div>
                 <div class="select-card">
-                    <h3 class="select-card-title" data-i18n="callDiscussTitle">Созвониться, обсудить</h3>
+                    <h3 class="select-card-title" data-i18n="callDiscussTitle">Call to discuss</h3>
                     <p class="select-card-text" data-i18n="callDiscussText">
-                        Забронируйте удобное время для бесплатной консультации через Cal.com.
+                        Book a convenient time for a free consultation via Cal.com.
                     </p>
                     <button type="button" class="select-cal-btn" id="open-cal-from-overlay" data-i18n="callDiscussCta">
-                        Перейти к календарю
+                        Open calendar
                     </button>
                 </div>
             </div>
@@ -1181,15 +1260,15 @@
                 "web": "Web & Platforms",
                 "ai": "AI Assistants",
                 "portfolio": "Portfolio",
-                "clickupTitle": "ClickUp",
+                "clickupTitle": "CRM & Sales Automation",
                 "clickupMeta": "Productivity · CRM + flows",
                 "clickupSummary": "Deep CRM and automation setup to remove manual routine from the sales team.",
-                "contraTitle": "Contra",
-                "contraMeta": "B2B · Processes",
-                "contraSummary": "End‑to‑end funnel automation and notification system around key sales events.",
-                "temboTitle": "Tembo",
-                "temboMeta": "Operations · Automation",
-                "temboSummary": "Internal tools and dashboards that connect scattered business systems together.",
+                "lmsTitle": "LMS Platform",
+                "lmsMeta": "EdTech · Processes",
+                "lmsSummary": "Revolutionary educational platform: 24/7 AI assistant, gamification, and 6 personalized interfaces for complete learning cycle",
+                "temboTitle": "Marketly",
+                "temboMeta": "Marketplaces · E-commerce",
+                "temboSummary": "Marketplace demo: catalog with search/filters, cart, checkout, profile, and orders.",
                 "listenlabsTitle": "ListenLabs",
                 "listenlabsMeta": "SaaS · Launch site",
                 "listenlabsSummary": "High-conversion marketing site for a fast‑growing SaaS product.",
@@ -1208,16 +1287,25 @@
                 "vibecodeTitle": "Vibecode",
                 "vibecodeMeta": "AI · Development",
                 "vibecodeSummary": "Next-gen AI code editor focused on predictive coding and automated refactoring.",
-                "footerCopy": "© 2026 Zodtech. All rights reserved."
+                "webCaseDigitalTitle": "Digital Studio",
+                "webCaseDigitalMeta": "digital-studio.pages.dev",
+                "webCaseDigitalSummary": "Demonstration project for preview. Built with HTML, CSS, and JavaScript.",
+                "webCaseAutoTitle": "Auto Market",
+                "webCaseAutoMeta": "auto-market.pages.dev",
+                "webCaseAutoSummary": "Demonstration project for preview. Built with HTML, CSS, and JavaScript.",
+                "webCaseMedicineTitle": "Medicine Center",
+                "webCaseMedicineMeta": "medicinecenter.pages.dev",
+                "webCaseMedicineSummary": "Demonstration project for preview. Built with HTML, CSS, and JavaScript.",
+                "footerCopy": "© 2026 . All rights reserved."
             },
             "ru": {
                 "back": "Назад",
                 "ourServices": "Наши услуги",
                 "bookCall": "Обсудить задачу",
                 "freeConsult": "Обсудить задачу",
-                "aiTitleMain": "AICases",
-                "webTitleMain": "WebCases",
-                "automationTitleMain": "TopCases",
+                "aiTitleMain": "Кейсы AI",
+                "webTitleMain": "Веб-кейсы",
+                "automationTitleMain": "Лучшие Кейсы",
                 "otherPortfoliosHint": "Больше решений для роста:",
                 "viewLabel": "Смотреть",
                 "title": "Zodtech",
@@ -1235,15 +1323,15 @@
                 "web": "Сайты и платформы",
                 "ai": "AI-ассистенты",
                 "portfolio": "Портфолио",
-                "clickupTitle": "ClickUp",
+                "clickupTitle": "CRM и автоматизация продаж",
                 "clickupMeta": "Продуктивность · CRM и потоки",
                 "clickupSummary": "Глубокая настройка CRM и автоматизации, чтобы убрать рутину из работы отдела продаж.",
-                "contraTitle": "Contra",
-                "contraMeta": "B2B · Процессы",
-                "contraSummary": "Сквозная автоматизация воронки и уведомления вокруг ключевых этапов продаж.",
-                "temboTitle": "Tembo",
-                "temboMeta": "Операции · Автоматизация",
-                "temboSummary": "Внутренние инструменты и дашборды, объединяющие разрозненные бизнес-системы.",
+                "lmsTitle": "LMS Platform",
+                "lmsMeta": "EdTech · Процессы",
+                "lmsSummary": "Революционная образовательная платформа: AI-ассистент 24/7, геймификация и 6 персональных интерфейсов для полного цикла обучения",
+                "temboTitle": "Marketly",
+                "temboMeta": "Маркетплейсы · E-commerce",
+                "temboSummary": "Демо маркетплейса: каталог с поиском/фильтрами, корзина, checkout, профиль и заказы.",
                 "listenlabsTitle": "ListenLabs",
                 "listenlabsMeta": "SaaS · Сайт запуска",
                 "listenlabsSummary": "Высококонверсионный маркетинговый сайт для растущего SaaS-продукта.",
@@ -1262,7 +1350,16 @@
                 "vibecodeTitle": "Vibecode",
                 "vibecodeMeta": "AI · Разработка",
                 "vibecodeSummary": "AI-редактор кода нового поколения с фокусом на предиктивное программирование.",
-                "footerCopy": "© 2026 Zodtech. Все права защищены."
+                "webCaseDigitalTitle": "Digital Studio",
+                "webCaseDigitalMeta": "digital-studio.pages.dev",
+                "webCaseDigitalSummary": "Демонстрационный проект для просмотра. Сделан на HTML, CSS и JavaScript.",
+                "webCaseAutoTitle": "Auto Market",
+                "webCaseAutoMeta": "auto-market.pages.dev",
+                "webCaseAutoSummary": "Демонстрационный проект для просмотра. Сделан на HTML, CSS и JavaScript.",
+                "webCaseMedicineTitle": "Medicine Center",
+                "webCaseMedicineMeta": "medicinecenter.pages.dev",
+                "webCaseMedicineSummary": "Демонстрационный проект для просмотра. Сделан на HTML, CSS и JavaScript.",
+                "footerCopy": "© 2026 . Все права защищены."
             }
         };
 
@@ -1270,19 +1367,41 @@
             "automation": {
                 "titleMain": "automationTitleMain",
                 "items": [
-                    { "id": "clickup", "titleKey": "clickupTitle", "metaKey": "clickupMeta", "summaryKey": "clickupSummary" },
-                    { "id": "contra", "titleKey": "contraTitle", "metaKey": "contraMeta", "summaryKey": "contraSummary" },
-                    { "id": "tembo", "titleKey": "temboTitle", "metaKey": "temboMeta", "summaryKey": "temboSummary" }
+                    { "id": "crm-sales-automation", "titleKey": "clickupTitle", "metaKey": "clickupMeta", "summaryKey": "clickupSummary", "image": "../assets/Airbrush-OBJECT-REMOVER-1773583211402.png" },
+                    { "id": "lms-platform", "titleKey": "lmsTitle", "metaKey": "lmsMeta", "summaryKey": "lmsSummary", "image": "../assets/LMS preview.png" },
+                    { "id": "tembo", "titleKey": "temboTitle", "metaKey": "temboMeta", "summaryKey": "temboSummary", "image": "../Marketly-assets/image.png" }
                 ]
             },
             "web": {
                 "titleMain": "webTitleMain",
                 "items": [
-                    { "id": "listenlabs", "titleKey": "listenlabsTitle", "metaKey": "listenlabsMeta", "summaryKey": "listenlabsSummary" },
-                    { "id": "bolt", "titleKey": "boltTitle", "metaKey": "boltMeta", "summaryKey": "boltSummary" },
-                    { "id": "framer", "titleKey": "framerTitle", "metaKey": "framerMeta", "summaryKey": "framerSummary" }
+                    {
+                        "id": "digital-studio",
+                        "href": "https://digital-studio.pages.dev",
+                        "titleKey": "webCaseDigitalTitle",
+                        "metaKey": "webCaseDigitalMeta",
+                        "summaryKey": "webCaseDigitalSummary",
+                        "image": "../Marketly-assets/project-2.png"
+                    },
+                    {
+                        "id": "auto-market",
+                        "href": "https://auto-market.pages.dev",
+                        "titleKey": "webCaseAutoTitle",
+                        "metaKey": "webCaseAutoMeta",
+                        "summaryKey": "webCaseAutoSummary",
+                        "image": "../Marketly-assets/image car.png"
+                    },
+                    {
+                        "id": "medicine-center",
+                        "href": "https://medicinecenter.pages.dev",
+                        "titleKey": "webCaseMedicineTitle",
+                        "metaKey": "webCaseMedicineMeta",
+                        "summaryKey": "webCaseMedicineSummary",
+                        "image": "../Marketly-assets/image hospital.png"
+                    }
                 ]
             },
+            /*
             "ai": {
                 "titleMain": "aiTitleMain",
                 "items": [
@@ -1291,6 +1410,7 @@
                     { "id": "vibecode", "titleKey": "vibecodeTitle", "metaKey": "vibecodeMeta", "summaryKey": "vibecodeSummary" }
                 ]
             }
+            */
         };
 
         let currentCategory = 'automation';
@@ -1312,14 +1432,17 @@
 
             // Update Grid
             grid.innerHTML = data.items.map(item => `
-                <a href="/services/${item.id}" class="case-card">
-                    <div class="card-corners"></div>
+                <a href="${item.href ? item.href : `/services/${item.id}`}" class="case-card" ${item.href ? 'target="_blank" rel="noopener noreferrer"' : ''}>
                     <div class="case-media-placeholder">
-                        <span class="case-view-overlay" data-i18n="viewLabel">${translations[currentLang].viewLabel}</span>
+                        <div class="card-corners"></div>
+                        <div class="case-media-inner">
+                            ${item.image ? `<img src="${item.image}" alt="${(item.titleKey ? (translations[currentLang]?.[item.titleKey] || '') : (item.title || '')) || 'Zodtech case study'}" class="case-card-image" loading="lazy">` : ''}
+                            <span class="case-view-overlay" data-i18n="viewLabel">${translations[currentLang].viewLabel}</span>
+                        </div>
                     </div>
-                    <div class="case-title" data-i18n="${item.titleKey}">${translations[currentLang][item.titleKey]}</div>
-                    <div class="case-meta" data-i18n="${item.metaKey}">${translations[currentLang][item.metaKey]}</div>
-                    <div class="case-summary" data-i18n="${item.summaryKey}">${translations[currentLang][item.summaryKey]}</div>
+                    <div class="case-title" ${item.titleKey ? `data-i18n="${item.titleKey}"` : ''}>${item.titleKey ? translations[currentLang][item.titleKey] : (item.title || '')}</div>
+                    <div class="case-meta" ${item.metaKey ? `data-i18n="${item.metaKey}"` : ''}>${item.metaKey ? translations[currentLang][item.metaKey] : (item.meta || '')}</div>
+                    <div class="case-summary" ${item.summaryKey ? `data-i18n="${item.summaryKey}"` : ''}>${item.summaryKey ? translations[currentLang][item.summaryKey] : (item.summary || '')}</div>
                 </a>
             `).join('');
 

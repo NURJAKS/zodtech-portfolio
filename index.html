@@ -4,7 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zodtech - Home</title>
+    <title>AI Automation for Business — Turnkey Solutions | Zodtech</title>
+    <meta name="description"
+        content="AI and business process automation for enterprises, government, and SMB in Kazakhstan. Turnkey solutions. Free consultation.">
+    <meta name="keywords"
+        content="business automation, AI for business, turnkey automation, Kazakhstan, Zodtech, Zodtek, Zotech, Зодтеч, Зодтек">
+    <meta name="author" content="Zodtech">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="1y1qFU0MxXQ3Mxpehmz9vP-Fec_bjuVvZOZDJzhSpgs">
+    <!-- Yandex: <meta name="yandex-verification" content="..."> -->
+    <!-- Bing: <meta name="msvalidate.01" content="..."> -->
+    <link rel="canonical" href="https://zodtech.kz/">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zodtech.kz/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://zodtech.kz/assets/favicon-48.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zodtech.kz/">
+    <meta property="og:title" content="AI Automation for Business — Turnkey Solutions | Zodtech">
+    <meta property="og:description"
+        content="AI and business process automation for enterprises, government, and SMB in Kazakhstan. Turnkey solutions. Free consultation.">
+    <meta property="og:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Zodtech">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zodtech.kz/">
+    <meta name="twitter:title" content="AI Automation for Business — Turnkey Solutions | Zodtech">
+    <meta name="twitter:description"
+        content="AI and business process automation for enterprises, government, and SMB in Kazakhstan. Turnkey solutions. Free consultation.">
+    <meta name="twitter:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"ProfessionalService","name":"Zodtech","alternateName":["Zodtek","Zotech","Зодтеч","Zodtech.kz"],"url":"https://zodtech.kz/","logo":"https://zodtech.kz/assets/LOGO.png","image":"https://zodtech.kz/assets/LOGO.png","description":"AI and business process automation for enterprises, government, and SMB in Kazakhstan. Turnkey solutions.","telephone":"+77002174701","email":"info@zodtech.kz","address":{"@type":"PostalAddress","addressCountry":"KZ"},"knowsLanguage":["en","ru","kk"],"areaServed":["KZ","RU","CIS","Worldwide"],"serviceType":["Business process automation","CRM and sales automation","AI solutions for business","Turnkey automation"],"contactPoint":{"@type":"ContactPoint","telephone":"+77002174701","contactType":"customer service","email":"info@zodtech.kz","availableLanguage":["English","Russian","Kazakh"],"areaServed":"KZ","url":"https://zodtech.kz/#contact"},"sameAs":["https://www.instagram.com/zodtech.kz","https://t.me/NURJAKS1","https://www.linkedin.com/in/nurbek-abildaev-b1b277345","https://www.facebook.com/profile.php?id=100054921349803"]}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,6 +65,10 @@
             --accent-color: #0052FF;
         }
 
+        html {
+            scrollbar-gutter: stable;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -44,51 +79,97 @@
             font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
             width: 100vw;
             overflow: hidden;
             margin: 0;
-            padding: 56px 20px 40px;
+            padding: 20px 20px 40px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .site-header {
-            position: fixed;
-            top: 0;
+        .home-footer {
+            position: absolute;
+            bottom: -44px;
             left: 0;
             right: 0;
-            width: 100%;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            z-index: 999998;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
         }
 
+        .home-footer p {
+            font-size: 11px;
+            color: var(--subheadline-color);
+            letter-spacing: 0.05em;
+            text-transform: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .home-footer {
+                bottom: 10px;
+            }
+        }
+
+        .site-header {
+            display: none !important;
+        }
+
+        .lang-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999999;
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--lang-btn-border);
+            background: var(--lang-btn-bg);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            background: var(--lang-btn-hover-bg);
+            transform: translateY(-1px);
+        }
+
+        .hero-wrapper {
+            position: relative;
+            min-height: calc(100vh - 56px - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 60px;
+        }
+
+        /* BLOCK 1: LOGO POSITIONING */
+        /* Change margin-top to move logo up/down */
+        .sub-header-logo {
+            margin-top: -57px;
+            /* INCREASE to move DOWN, DECREASE to move UP */
+            margin-bottom: -20px;
+        }
+
+        /* BLOCK 2: TEXT BLOCK POSITIONING */
+        /* Change margin-top to move entire text block independently of logo */
         .container {
+            margin-top: 266px;
+            /* INCREASE to move DOWN, DECREASE to move UP */
             max-width: 800px;
             width: 100%;
             text-align: center;
-            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .site-header .logo {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+        .logo {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -96,19 +177,27 @@
             color: var(--logo-text-color);
         }
 
-        .site-header .logo:hover {
-            transform: translate(-50%, -50%) scale(1.05);
+        .home-logo {
+            display: inline-flex;
+            margin-bottom: 24px;
+            z-index: 10;
+        }
+
+        .header-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .logo-icon {
-            width: 28px;
-            height: 28px;
+            width: 34px;
+            height: 34px;
             object-fit: contain;
         }
 
         .logo-text {
             font-family: "Inter", sans-serif;
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--logo-text-color);
             letter-spacing: -0.6px;
@@ -143,6 +232,24 @@
             line-height: 1.5;
         }
 
+        /* Entrance Animations - Initial State */
+        .sub-header-logo {
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .headline,
+        .subheadline,
+        .buttons {
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .headline span,
+        .subheadline span {
+            display: inline-block;
+        }
+
         /* Pill Nav Animation Styles */
         .buttons {
             position: relative;
@@ -158,17 +265,20 @@
 
         .button {
             position: relative;
-            padding: 0 24px;
+            padding: 0 22px;
+            /* REDUCED from 24px */
             border-radius: 9999px;
             font-family: "Inter", sans-serif;
-            font-size: 18px;
+            font-size: 17px;
+            /* REDUCED from 18px */
             font-weight: 600;
             text-decoration: none;
             border: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            height: 44px;
+            height: 42px;
+            /* REDUCED from 44px */
             white-space: nowrap;
             cursor: pointer;
             overflow: hidden;
@@ -347,26 +457,33 @@
         }
 
         @media (max-width: 768px) {
-            .logo {
-                display: none !important;
-            }
-
             body {
-                padding: 16px 14px;
+                padding: 20px 14px 40px;
                 justify-content: center;
             }
 
-            .logo {
-                margin-bottom: 24px;
+            .hero-wrapper {
+                padding-top: 20px;
+            }
+
+            .sub-header-logo {
+                margin-top: -15px;
+                /* Lowered for mobile (Desktop is -55px) */
+                margin-bottom: 40px;
+            }
+
+            .home-logo {
+                margin-top: 10px;
+                margin-bottom: 0px;
             }
 
             .logo-icon {
-                width: 28px;
-                height: 28px;
+                width: 32px;
+                height: 32px;
             }
 
             .logo-text {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .headline {
@@ -393,10 +510,13 @@
             .button {
                 width: auto;
                 max-width: none;
-                height: 38px;
-                padding: 0 16px;
-                font-size: 12px;
-                letter-spacing: 0.3px;
+                height: 34px;
+                /* REDUCED from 38px */
+                padding: 0 12px;
+                /* REDUCED from 16px */
+                font-size: 11px;
+                /* REDUCED from 12px */
+                letter-spacing: 0.2px;
             }
 
             .blurfade-cards {
@@ -571,7 +691,6 @@
             max-width: 35px;
             max-height: 35px;
             display: block;
-            vertical-align: middle;
             transition: transform 0.2s ease;
         }
 
@@ -697,88 +816,98 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <a href="/" class="logo">
-            <img src="LOGO.png" alt="zodtech Logo" class="logo-icon">
-            <div class="logo-text">Zodtech</div>
-        </a>
-        <button id="lang-switcher" class="lang-btn">RU</button>
-    </header>
-    <div class="container">
-        <h5 class="headline" data-i18n="headline">AI-Powered Automation for<br><span>Business Processes</span></h5>
-
-        <p class="subheadline" data-i18n="subheadline">
-            Smart workflows to scale<br>your business.
-        </p>
-
-        <div class="buttons">
-            <a href="/services" class="button button-call">
-                <span class="hover-circle" aria-hidden="true"></span>
-                <span class="label-stack">
-                    <span class="pill-label" data-i18n="ourServices">our services</span>
-                    <span class="pill-label-hover" aria-hidden="true" data-i18n="ourServices">our services</span>
-                </span>
+    <button id="lang-switcher" class="lang-btn">RU</button>
+    <main>
+        <div class="hero-wrapper">
+            <a href="/" class="logo sub-header-logo">
+                <img src="assets/LOGO.png" alt="Zodtech AI Automation" class="logo-icon">
+                <div class="logo-text">Zodtech</div>
             </a>
-            <a href="#" class="button button-third">
-                <span class="hover-circle" aria-hidden="true"></span>
-                <span class="label-stack">
-                    <span class="pill-label" data-i18n="bookCall">Free Consult</span>
-                    <span class="pill-label-hover" aria-hidden="true" data-i18n="bookCall">Free Consult</span>
-                </span>
-            </a>
+            <div class="container">
+                <div class="reveal-mask">
+                    <h1 class="headline" data-i18n="headline">AI-Powered Automation for<br><span>Business
+                            Processes</span></h1>
+                </div>
+
+                <div class="reveal-mask">
+                    <p class="subheadline" data-i18n="subheadline">Smart workflows to scale<br>your business.</p>
+                </div>
+
+                <div class="buttons">
+                    <a href="/services" class="button button-call">
+                        <span class="hover-circle" aria-hidden="true"></span>
+                        <span class="label-stack">
+                            <span class="pill-label" data-i18n="ourServices">our services</span>
+                            <span class="pill-label-hover" aria-hidden="true" data-i18n="ourServices">our
+                                services</span>
+                        </span>
+                    </a>
+                    <a href="#" class="button button-third">
+                        <span class="hover-circle" aria-hidden="true"></span>
+                        <span class="label-stack">
+                            <span class="pill-label" data-i18n="bookCall">Free Consult</span>
+                            <span class="pill-label-hover" aria-hidden="true" data-i18n="bookCall">Free Consult</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <footer class="home-footer">
+                <p data-i18n="footerCopy">© 2026 . All rights reserved.</p>
+            </footer>
         </div>
 
-    </div>
-
-    <div class="select-overlay" id="select-overlay">
-        <div class="select-overlay-inner">
-            <button class="select-close" id="select-close" aria-label="Close">&times;</button>
-            <div class="select-grid">
-                <div class="select-card">
-                    <h3 class="select-card-title" data-i18n="discussTaskTitle">Discuss the task</h3>
-                    <p class="select-card-text" data-i18n="discussTaskText">Write to us in a convenient messenger — we
-                        will discuss your task and suggest a solution.</p>
-                    <div class="select-card-icons">
-                        <a href="https://wa.me/77002174701" target="_blank" rel="noopener noreferrer"
-                            class="select-icon-link" aria-label="WhatsApp"><img src="whatsapp.png" alt="WhatsApp"
-                                class="select-icon-img"></a>
-                        <a href="https://www.instagram.com/nurjaks_89?igsh=MWg3dDVlZ2I2cGpkbA==" target="_blank"
-                            rel="noopener noreferrer" class="select-icon-link" aria-label="Instagram"><img
-                                src="instagram.png" alt="Instagram" class="select-icon-img"></a>
-                        <a href="https://x.com/NAbildaev60153" target="_blank" rel="noopener noreferrer"
-                            class="select-icon-link" aria-label="X"><span class="select-icon x">X</span><span
-                                class="select-icon-label keep-label" data-i18n="socialX">(twitter)</span></a>
+        <div class="select-overlay" id="select-overlay">
+            <div class="select-overlay-inner">
+                <button class="select-close" id="select-close" aria-label="Close">&times;</button>
+                <div class="select-grid">
+                    <div class="select-card">
+                        <h3 class="select-card-title" data-i18n="discussTaskTitle">Discuss the task</h3>
+                        <p class="select-card-text" data-i18n="discussTaskText">Write to us in a convenient
+                            messenger — we
+                            will discuss your task and suggest a solution.</p>
+                        <div class="select-card-icons">
+                            <a href="https://wa.me/77002174701" target="_blank" rel="noopener noreferrer"
+                                class="select-icon-link" aria-label="WhatsApp"><img src="assets/whatsapp.png"
+                                    alt="WhatsApp" class="select-icon-img"></a>
+                            <a href="https://www.instagram.com/nurjaks_89?igsh=MWg3dDVlZ2I2cGpkbA==" target="_blank"
+                                rel="noopener noreferrer" class="select-icon-link" aria-label="Instagram"><img
+                                    src="assets/instagram.png" alt="Instagram" class="select-icon-img"></a>
+                            <a href="https://x.com/NAbildaev60153" target="_blank" rel="noopener noreferrer"
+                                class="select-icon-link" aria-label="X"><span class="select-icon x">X</span><span
+                                    class="select-icon-label keep-label" data-i18n="socialX">(twitter)</span></a>
+                        </div>
                     </div>
-                </div>
-                <div class="select-card">
-                    <h3 class="select-card-title" data-i18n="callDiscussTitle">Call to discuss</h3>
-                    <p class="select-card-text" data-i18n="callDiscussText">Book a convenient time for a free
-                        consultation via Cal.com.</p>
-                    <button type="button" class="select-cal-btn" id="open-cal-from-overlay"
-                        data-i18n="callDiscussCta">Open calendar</button>
+                    <div class="select-card">
+                        <h3 class="select-card-title" data-i18n="callDiscussTitle">Call to discuss</h3>
+                        <p class="select-card-text" data-i18n="callDiscussText">Book a convenient time for a free
+                            consultation via Cal.com.</p>
+                        <button type="button" class="select-cal-btn" id="open-cal-from-overlay"
+                            data-i18n="callDiscussCta">Open calendar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="cal-modal-overlay" id="cal-modal-overlay">
-        <div class="cal-modal-content">
-            <button class="close-cal-button" id="close-cal-button">&times;</button>
-            <!-- Cal inline embed code begins -->
-            <div id="my-cal-inline-15min"></div>
-            <script type="text/javascript">
-                (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-                Cal("init", "15min", { origin: "https://app.cal.com" });
-                Cal.ns["15min"]("inline", {
-                    elementOrSelector: "#my-cal-inline-15min",
-                    config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" },
-                    calLink: "zodtech/15min",
-                });
-                Cal.ns["15min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
-            </script>
-            <!-- Cal inline embed code ends -->
+        <div class="cal-modal-overlay" id="cal-modal-overlay">
+            <div class="cal-modal-content">
+                <button class="close-cal-button" id="close-cal-button">&times;</button>
+                <!-- Cal inline embed code begins -->
+                <div id="my-cal-inline-15min"></div>
+                <script type="text/javascript">
+                    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                    Cal("init", "15min", { origin: "https://app.cal.com" });
+                    Cal.ns["15min"]("inline", {
+                        elementOrSelector: "#my-cal-inline-15min",
+                        config: { "layout": "month_view", "useSlotsViewOnSmallScreen": "true" },
+                        calLink: "zodtech/15min",
+                    });
+                    Cal.ns["15min"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
+                </script>
+                <!-- Cal inline embed code ends -->
+            </div>
         </div>
-    </div>
+    </main>
     <script>
         const translations = {
             "en": {
@@ -790,6 +919,7 @@
                 "aiPortfolioTitle": "AI-Bots Portfolio",
                 "viewLabel": "View",
                 "title": "Zodtech",
+                "titleFull": "AI Automation for Business — Turnkey Solutions | Zodtech",
                 "headline": "AI-Powered Automation for<br><span>Business Processes</span>",
                 "subheadline": "Smart workflows to scale<br>your business.",
                 "discussTaskTitle": "Discuss the task",
@@ -803,7 +933,8 @@
                 "automation": "Automation",
                 "web": "Web Development",
                 "ai": "AI-Bots",
-                "portfolio": "Portfolio"
+                "portfolio": "Portfolio",
+                "footerCopy": "© 2026 . All rights reserved."
             },
             "ru": {
                 "back": "Назад",
@@ -814,6 +945,7 @@
                 "aiPortfolioTitle": "AI-Bots портфолио",
                 "viewLabel": "Смотреть",
                 "title": "Zodtech",
+                "titleFull": "AI-автоматизация для бизнеса — решения под ключ | Zodtech",
                 "headline": "Автоматизация бизнеса<br><span>на базе ИИ</span>",
                 "subheadline": "Умные рабочие процессы для<br>масштабирования вашего бизнеса.",
                 "discussTaskTitle": "Обсудить задачу",
@@ -826,8 +958,9 @@
                 "socialX": "(twitter)",
                 "automation": "Автоматизация",
                 "web": "Веб-разработка",
-                "ai": "AI-Bots",
-                "portfolio": "Портфолио"
+                "ai": "AI-боты",
+                "portfolio": "Портфолио",
+                "footerCopy": "© 2026. Все права защищены."
             }
         };
 
@@ -840,7 +973,7 @@
             if (langBtn) langBtn.textContent = lang === 'en' ? 'RU' : 'EN';
 
             const t = translations[lang];
-            document.title = t.title;
+            document.title = t.titleFull || t.title;
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1237,7 +1370,6 @@
             draw();
         }
 
-        // Initialize everything when DOM is ready
         function initAll() {
             if (window.appInitialized) return;
             window.appInitialized = true;
@@ -1256,10 +1388,61 @@
             });
         }
 
+        // Entrance Animation Sequence
+        function runEntranceAnimation() {
+            const tl = gsap.timeline({
+                defaults: {
+                    duration: 0.5,
+                    ease: "power2.out"
+                }
+            });
+
+            // 1. Logo appears from the top edge of the site (from "nowhere")
+            tl.to(".sub-header-logo", {
+                opacity: 1,
+                y: 0,
+                startAt: { y: -100 },
+                duration: 0.6,
+                ease: "expo.out"
+            });
+
+            // 2. Staggered Quick Fade-in for remaining content
+            tl.to(".headline", {
+                opacity: 1,
+                y: 0,
+                startAt: { y: 15 },
+                duration: 0.5
+            }, "-=0.4");
+
+            tl.to(".subheadline", {
+                opacity: 1,
+                y: 0,
+                startAt: { y: 10 },
+                duration: 0.5
+            }, "-=0.35");
+
+            tl.to(".buttons", {
+                opacity: 1,
+                y: 0,
+                startAt: { y: 10 },
+                duration: 0.5
+            }, "-=0.35");
+
+            tl.to(".home-footer", {
+                opacity: 0.5,
+                duration: 1,
+                ease: "power1.inOut"
+            }, "-=0.2");
+        }
+
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initAll);
+            document.addEventListener('DOMContentLoaded', () => {
+                initAll();
+                runEntranceAnimation();
+            });
         } else {
             initAll();
+            runEntranceAnimation();
         }
     </script>
 </body>

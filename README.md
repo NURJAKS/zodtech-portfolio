@@ -1,53 +1,18 @@
-# zodtech Website
+# zodtech-portfolio
 
-## Структура проекта
+Static portfolio website for **Zodtech** (`zodtech.kz`).
 
-```
-zodtech/
-├── index.html          # Главная страница
-├── case-study.html     # Страница с кейсами
-├── case-study/         # Отдельные страницы кейсов
-│   ├── bolt.html
-│   ├── clickup.html
-│   ├── contra.html
-│   ├── framer.html
-│   ├── krea.html
-│   ├── listenlabs.html
-│   ├── magicpath.html
-│   ├── tembo.html
-│   ├── urpal.html
-│   ├── vibecode.html
-│   ├── whop.html
-│   └── wonder.html
-├── css/                # CSS файлы (если будут извлечены)
-├── js/                 # JavaScript файлы (если будут извлечены)
-└── assets/            # Ресурсы (изображения, шрифты и т.д.)
-    ├── images/
-    └── fonts/
-```
-
-## Технические детали
-
-- **Платформа**: Framer
-- **Тип**: Статический сайт
-- **Особенности**: 
-  - Динамическая загрузка модулей через Framer CDN
-  - Встроенные стили и скрипты в HTML
-  - Использование внешних сервисов (Cal.com для записи)
-
-## Запуск проекта
-
-Для локального запуска используйте простой HTTP сервер:
+## Run locally
 
 ```bash
 python3 -m http.server 4444
 ```
 
-Затем откройте в браузере: http://localhost:4444
+Open `http://localhost:4444`.
 
-## Примечания
+## Structure
 
-- Большая часть CSS и JavaScript встроена в HTML файлы
-- Сайт использует внешние CDN для загрузки модулей Framer
-- Для полноценной работы требуется интернет-соединение
-- Изображения могут быть встроены как base64 или загружаться с внешних источников
+- `index.html` — home page
+- `services/` — cases index + case pages
+- `assets/` — images and other static files
+- `robots.txt`, `sitemap.xml` — SEO files

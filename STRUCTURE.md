@@ -9,23 +9,20 @@
 ### Основные HTML файлы
 
 - **index.html** - Главная страница сайта (2.8 MB)
-- **case-study.html** - Страница со списком кейсов (8.4 MB)
+- **services/index.html** - Страница со списком кейсов (TopCases/WebCases/AICases)
 
-### Папка case-study/
+### Папка services/
 
-Содержит отдельные страницы кейсов клиентов:
-- bolt.html (14 MB)
-- clickup.html (3.0 MB)
-- contra.html (2.9 MB)
-- framer.html (2.8 MB)
-- krea.html (2.9 MB)
-- listenlabs.html (2.6 MB)
-- magicpath.html (3.0 MB)
-- tembo.html (2.9 MB)
-- urpal.html (2.8 MB)
-- vibecode.html (2.8 MB)
-- whop.html (3.0 MB)
-- wonder.html (2.9 MB)
+Содержит отдельные страницы кейсов клиентов в своих папках:
+- bolt
+- crm-sales-automation
+- lms-platform
+- framer
+- krea
+- listenlabs
+- tembo
+- vibecode
+- wonder
 
 ### Вспомогательные папки
 

@@ -4,7 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>Zodtech — Vibecode Case Study</title>
+    <meta name="description" content="Vibecode: next-gen AI code editor. Case study by Zodtech.">
+    <link rel="canonical" href="https://zodtech.kz/services/vibecode/">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zodtech.kz/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://zodtech.kz/assets/favicon-48.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zodtech.kz/services/vibecode/">
+    <meta property="og:title" content="Zodtech — Vibecode Case Study">
+    <meta property="og:description" content="Vibecode: next-gen AI code editor. Zodtech case study.">
+    <meta property="og:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Zodtech">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zodtech.kz/services/vibecode/">
+    <meta name="twitter:title" content="Zodtech — Vibecode Case Study">
+    <meta name="twitter:description" content="Vibecode AI code editor. Zodtech case study.">
+    <meta name="twitter:image" content="https://zodtech.kz/assets/images/og-1200x630.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://zodtech.kz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://zodtech.kz/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Vibecode",
+          "item": "https://zodtech.kz/services/vibecode/"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "E-Commerce & Digital Experience",
+      "description": "High-conversion e-commerce platforms and digital brand experiences built for scale.",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Zodtech",
+        "url": "https://zodtech.kz/"
+      },
+      "areaServed": "Worldwide"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -13,19 +72,20 @@
         /* ========== DESIGN TOKENS ========== */
         :root {
             --bg: #ffffff;
-            --text: #1a1a1a;
-            --text-secondary: #6b7280;
+            --sidebar-bg: #ffffff;
+            --text: #000000;
+            --text-secondary: #545454;
+            --text-grey: rgba(0, 0, 0, 0.4);
             --accent: #0052FF;
             --accent-dim: rgba(0, 82, 255, 0.12);
-            --card-bg: rgba(255, 255, 255, 0.7);
+            --corner-color: #003EB2;
             --border: rgba(0, 0, 0, 0.06);
-            --corner-color: #0052FF;
+            --header-border: rgba(0, 0, 0, 0.1);
+            --lang-btn-border: rgba(0, 0, 0, 0.14);
             --logo-color: #000;
-            --side-art-color: rgba(0, 0, 0, 0.04);
             --squares-border: #deddda;
-            --footer-text: #9ca3af;
-            --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --shadow-media: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --footer-text: rgba(0, 0, 0, 0.3);
+            --shadow-media: 0 40px 100px rgba(0, 0, 0, 0.08);
         }
 
         /* ========== RESET ========== */
@@ -39,12 +99,12 @@
 
         /* ========== BASE ========== */
         body {
-            font-family: "Inter", -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 0.4s ease, color 0.4s ease;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ========== THREE-COLUMN LAYOUT: GRID SIDEBARS + WHITE CENTER ========== */
@@ -52,7 +112,7 @@
             position: fixed;
             top: 0;
             bottom: 0;
-            width: calc((100vw - 1000px) / 2);
+            width: calc((100vw - 1100px) / 2);
             z-index: 10;
             pointer-events: none;
             background-color: var(--bg);
@@ -74,7 +134,7 @@
         .page-center {
             position: relative;
             z-index: 20;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             min-height: 100vh;
             background: var(--bg);
@@ -105,7 +165,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             height: 56px;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
@@ -123,11 +183,6 @@
             gap: 10px;
             text-decoration: none;
             color: var(--text);
-            transition: transform 0.3s ease;
-        }
-
-        .logo-header:hover {
-            transform: scale(1.05);
         }
 
         .logo-icon {
@@ -137,9 +192,10 @@
         }
 
         .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.6px;
+            font-family: "Inter", sans-serif !important;
+            font-size: 22px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.6px !important;
         }
 
         .back-btn {
@@ -180,7 +236,7 @@
             height: 44px;
             border-radius: 12px;
             border: 1px solid var(--border);
-            background: var(--card-bg);
+            background: #ffffff;
             color: var(--text);
             font-family: "Inter", sans-serif;
             font-size: 13px;
@@ -200,7 +256,7 @@
 
         /* ========== CENTRAL CONTAINER ========== */
         .central {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 100px 0 80px;
             position: relative;
@@ -210,30 +266,33 @@
         /* ========== HERO ========== */
         .hero {
             text-align: center;
-            padding: 100px 0 80px;
-            max-width: 800px;
+            padding: 150px 0 40px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .hero-eyebrow {
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
 
         .hero-title {
-            font-size: clamp(36px, 6vw, 56px);
+            font-size: clamp(36px, 8vw, 72px);
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.05;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             background: linear-gradient(90deg, #1a1a1a 0%, #213c6a 45%, #1765c0 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
         }
 
         .hero-stats {
@@ -249,7 +308,7 @@
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             color: var(--accent);
             letter-spacing: -0.5px;
@@ -266,8 +325,8 @@
         /* ========== MEDIA BLOCK (Rich Style) ========== */
         .media-block {
             position: relative;
-            margin: 40px auto 100px;
-            max-width: 880px;
+            margin: 32px auto 64px;
+            max-width: 900px;
             padding: 24px;
         }
 
@@ -292,113 +351,71 @@
             object-fit: cover;
         }
 
-        /* ========== CORNER ACCENTS ========== */
-        .media-block {
-            position: relative;
-            overflow: visible;
-        }
-
+        /* Large Corner Accents (Standard Style) */
         .media-block::before,
         .media-block::after,
-        .media-block .card-corners::before,
-        .media-block .card-corners::after {
+        .card-corners::before,
+        .card-corners::after {
             content: "";
             position: absolute;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #003EB2;
+            width: 32px;
+            height: 32px;
+            border: 4px solid #003EB2;
             z-index: 10;
             pointer-events: none;
         }
 
         .media-block::before {
-            top: 16px;
-            left: 16px;
+            top: 8px;
+            left: 8px;
             border-right: none;
             border-bottom: none;
         }
 
         .media-block::after {
-            top: 16px;
-            right: 16px;
+            top: 8px;
+            right: 8px;
             border-left: none;
             border-bottom: none;
         }
 
-        .media-block .card-corners::before {
-            bottom: 16px;
-            left: 16px;
+        .card-corners::before {
+            bottom: 8px;
+            left: 8px;
             border-right: none;
             border-top: none;
         }
 
-        .media-block .card-corners::after {
-            bottom: 20px;
-            right: 20px;
+        .card-corners::after {
+            bottom: 8px;
+            right: 8px;
             border-left: none;
             border-top: none;
         }
 
         .media-placeholder-text {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--text-grey);
             text-transform: uppercase;
             letter-spacing: 0.15em;
-        }
-
-        /* ========== CORNER ACCENTS ========== */
-        .media-block {
-            position: relative;
-            overflow: visible;
-        }
-
-        .media-block::before,
-        .media-block::after,
-        .media-block .card-corners::before,
-        .media-block .card-corners::after {
-            content: "";
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #003EB2;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .media-block::before {
-            top: 16px;
-            left: 16px;
-            border-right: none;
-            border-bottom: none;
-        }
-
-        .media-block::after {
-            top: 16px;
-            right: 16px;
-            border-left: none;
-            border-bottom: none;
-        }
-
-        .media-block .card-corners::before {
-            bottom: 16px;
-            left: 16px;
-            border-right: none;
-            border-top: none;
-        }
-
-        .media-block .card-corners::after {
-            bottom: 20px;
-            right: 20px;
-            border-left: none;
-            border-top: none;
+            font-weight: 500;
         }
 
         /* ========== CONTENT SECTIONS ========== */
         .content-section {
-            margin-bottom: 80px;
-            max-width: 720px;
+            margin-bottom: 44px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .section-heading {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: var(--text-secondary);
         }
 
         .section-label {
@@ -408,24 +425,38 @@
             color: var(--accent);
             margin-bottom: 10px;
             font-weight: 700;
+            display: block;
         }
 
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .section-text {
-            font-size: 16px;
-            line-height: 1.75;
+        .section-body {
+            font-size: 18px;
+            line-height: 1.6;
             color: var(--text-secondary);
         }
 
-        .section-text+.section-text {
-            margin-top: 16px;
+        .section-body p {
+            margin-bottom: 24px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 12px;
+        }
+
+        .tech-list li {
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .tech-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-secondary);
         }
 
         /* ========== RESULTS GRID ========== */
@@ -452,7 +483,7 @@
         }
 
         .result-value {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             color: var(--accent);
             letter-spacing: -1px;
@@ -467,10 +498,10 @@
 
         /* ========== DIVIDER ========== */
         .divider {
+            display: none;
             border: none;
-            height: 1px;
-            background: var(--border);
-            margin: 48px 0;
+            height: 0;
+            margin: 0;
         }
 
         /* ========== FOOTER ========== */
@@ -491,7 +522,7 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1100px) {
             .case-sidebar {
-                display: none;
+                display: flex;
             }
         }
 
@@ -508,17 +539,29 @@
         }
 
         @media (max-width: 600px) {
+            .page-center {
+                padding: 0 20px;
+            }
+
             .central {
-                padding: 80px 16px 48px;
+                padding: 80px 20px 48px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero-title {
+                font-size: 32px;
             }
 
             .hero-stats {
-                gap: 24px;
+                gap: 20px;
             }
 
             .media-block {
-                margin: 0 -8px 40px;
-                padding: 14px;
+                margin: 0 -4px 40px;
+                padding: 24px;
             }
 
             .media-block::before {
@@ -546,7 +589,7 @@
             }
 
             .logo-header {
-                display: none;
+                display: flex;
             }
         }
     </style>
@@ -563,40 +606,25 @@
     <!-- ===== CENTRAL WHITE COLUMN: HEADER + CONTENT ===== -->
     <div class="page-center">
         <header class="site-header">
-            <a href="/services" class="back-btn">
+            <a href="/services" class="back-btn" aria-label="Back">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
-                <span data-i18n="back">Back</span>
             </a>
             <a href="/" class="logo-header">
-                <img src="../../LOGO.png" alt="Zodtech" class="logo-icon">
+                <img src="../../assets/LOGO.png" alt="Zodtech" class="logo-icon">
                 <div class="logo-text">Zodtech</div>
             </a>
             <button id="lang-switcher" class="lang-btn">RU</button>
         </header>
 
-        <main class="central">
+        <main>
 
             <!-- HERO -->
             <section class="hero">
-                <div class="hero-eyebrow" data-i18n="eyebrow">AI · Development</div>
                 <h1 class="hero-title" data-i18n="heroTitle">Vibecode</h1>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat1Value">90%</div>
-                        <div class="stat-label" data-i18n="stat1Label">Automation</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat2Value">AI-Bots</div>
-                        <div class="stat-label" data-i18n="stat2Label">Linter</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" data-i18n="stat3Value">Instant</div>
-                        <div class="stat-label" data-i18n="stat3Label">Refactor</div>
-                    </div>
-                </div>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">Next-gen AI code editor</p>
             </section>
 
             <!-- MAIN MEDIA -->
@@ -607,67 +635,70 @@
                 </div>
             </div>
 
-            <!-- ABOUT -->
+            <!-- SUMMARY -->
             <section class="content-section">
-                <div class="section-label" data-i18n="aboutLabel">About</div>
-                <h2 class="section-title" data-i18n="aboutTitle">Next-gen AI code editor</h2>
-                <p class="section-text" data-i18n="aboutText">For Vibecode, we created a revolutionary IDE experience
-                    built
-                    around AI-Bots. The project focuses on predictive coding and automated refactoring, allowing
-                    developers
-                    to build complex applications with unprecedented speed.</p>
+                <h2 class="section-heading" data-i18n="summaryHeading">About the client:</h2>
+                <div class="section-body">
+                    <p data-i18n="summaryText">Vibecode is an innovative developer tools company focusing on the future
+                        of coding. They set out to create a revolutionary IDE experience built around internal AI-Bots
+                        to help developers build complex applications with unprecedented speed and precision.</p>
+                </div>
             </section>
 
             <hr class="divider">
 
-            <!-- TASK -->
+            <!-- WHAT WE DID -->
             <section class="content-section">
-                <div class="section-label" data-i18n="taskLabel">Task</div>
-                <h2 class="section-title" data-i18n="taskTitle">Redefining the developer experience</h2>
-                <p class="section-text" data-i18n="taskText">Vibecode wanted to minimize the friction of manual coding.
-                    The
-                    goal was to integrate AI-Bots directly into the editor's core, providing real-time suggestions that
-                    are
-                    context-aware and architecturally sound.</p>
+                <h2 class="section-heading" data-i18n="processHeading">What we did:</h2>
+                <div class="section-body">
+                    <p data-i18n="processText">We implemented a deep-integration layer for AI-Bots that analyzes the
+                        entire codebase in real-time. By integrating these bots directly into the editor's core, we
+                        provided context-aware refactoring suggestions and automated boilerplate generation, minimizing
+                        the friction of manual coding and ensuring architectural consistency.</p>
+                </div>
             </section>
 
-            <hr class="divider">
-
-            <!-- SOLUTION -->
-            <section class="content-section">
-                <div class="section-label" data-i18n="solutionLabel">Solution</div>
-                <h2 class="section-title" data-i18n="solutionTitle">Context-aware AI integration</h2>
-                <p class="section-text" data-i18n="solutionText">We implemented a deep-integration layer for AI-Bots
-                    that
-                    analyzes the entire codebase in real-time. This allows the editor to offer high-level refactoring
-                    suggestions and automated boilerplate generation that follows the project's specific patterns.</p>
-            </section>
+            <!-- SECOND MEDIA BLOCK -->
+            <div class="media-block">
+                <div class="card-corners"></div>
+                <div class="media-frame">
+                    <span class="media-placeholder-text">AI-Bot Intelligence Interface</span>
+                </div>
+            </div>
 
             <hr class="divider">
 
             <!-- RESULTS -->
             <section class="content-section">
-                <div class="section-label" data-i18n="resultLabel">Results</div>
-                <h2 class="section-title" data-i18n="resultTitle">What we achieved</h2>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res1Value">90%</div>
-                        <div class="result-desc" data-i18n="res1Desc">Manual code reduction</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res2Value">AI-Bots</div>
-                        <div class="result-desc" data-i18n="res2Desc">Intelligence engine</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-value" data-i18n="res3Value">10x</div>
-                        <div class="result-desc" data-i18n="res3Desc">Speed of delivery</div>
-                    </div>
+                <h2 class="section-heading" data-i18n="resultsHeading">Results:</h2>
+                <div class="section-body">
+                    <p data-i18n="resultsText">The AI-integrated editor drastically redefined the developer experience,
+                        leading to a massive reduction in manual coding effort. The project successfully launched a
+                        powerful intelligence engine capable of 10x delivery speed for modern software teams.</p>
+                    <ul class="tech-list">
+                        <li data-i18n="res1">90% reduction in manual code entry</li>
+                        <li data-i18n="res2">AI-Bots intelligence engine launch</li>
+                        <li data-i18n="res3">10x delivery speed increase</li>
+                    </ul>
                 </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- TECH STACK -->
+            <section class="content-section">
+                <h2 class="section-heading" data-i18n="techHeading">Tech Stack:</h2>
+                <ul class="tech-list">
+                    <li>AI-Bot Intelligence Engine</li>
+                    <li>Context-Aware Code Analysis</li>
+                    <li>Automated Refactoring Layer</li>
+                    <li>Predictive Coding Interface</li>
+                </ul>
             </section>
 
             <!-- FOOTER -->
             <footer class="case-footer">
-                <p class="footer-copy" data-i18n="footerCopy">© 2026 Zodtech. All rights reserved.</p>
+                <p class="footer-copy" data-i18n="footerCopy">© 2026 . All rights reserved.</p>
             </footer>
         </main>
     </div>
@@ -675,42 +706,34 @@
     <script>
         const translations = {
             "en": {
-                "back": "Back",
-                "eyebrow": "Automation",
                 "heroTitle": "Vibecode",
-                "stat1Value": "90%", "stat1Label": "Automation",
-                "stat2Value": "AI-Bots", "stat2Label": "Linter",
-                "stat3Value": "Instant", "stat3Label": "Refactor",
-                "aboutLabel": "About", "aboutTitle": "Next-gen AI code editor",
-                "aboutText": "For Vibecode, we created a revolutionary IDE experience built around AI-Bots. The project focuses on predictive coding and automated refactoring, allowing developers to build complex applications with unprecedented speed.",
-                "taskLabel": "Task", "taskTitle": "Redefining the developer experience",
-                "taskText": "Vibecode wanted to minimize the friction of manual coding. The goal was to integrate AI-Bots directly into the editor's core, providing real-time suggestions that are context-aware and architecturally sound.",
-                "solutionLabel": "Solution", "solutionTitle": "Context-aware AI integration",
-                "solutionText": "We implemented a deep-integration layer for AI-Bots that analyzes the entire codebase in real-time. This allows the editor to offer high-level refactoring suggestions and automated boilerplate generation that follows the project's specific patterns.",
-                "resultLabel": "Results", "resultTitle": "What we achieved",
-                "res1Value": "90%", "res1Desc": "Manual code reduction",
-                "res2Value": "AI-Bots", "res2Desc": "Intelligence engine",
-                "res3Value": "10x", "res3Desc": "Speed of delivery",
-                "footerCopy": "© 2026 Zodtech. All rights reserved."
+                "heroSubtitle": "Next-gen AI code editor",
+                "summaryHeading": "About the client:",
+                "summaryText": "Vibecode is an innovative developer tools company focusing on the future of coding. They set out to create a revolutionary IDE experience built around internal AI-Bots to help developers build complex applications with unprecedented speed and precision.",
+                "processHeading": "What we did:",
+                "processText": "We implemented a deep-integration layer for AI-Bots that analyzes the entire codebase in real-time. By integrating these bots directly into the editor's core, we provided context-aware refactoring suggestions and automated boilerplate generation, minimizing the friction of manual coding and ensuring architectural consistency.",
+                "resultsHeading": "Results:",
+                "resultsText": "The AI-integrated editor drastically redefined the developer experience, leading to a massive reduction in manual coding effort. The project successfully launched a powerful intelligence engine capable of 10x delivery speed for modern software teams.",
+                "res1": "90% reduction in manual code entry",
+                "res2": "AI-Bots intelligence engine launch",
+                "res3": "10x delivery speed increase",
+                "techHeading": "Tech Stack:",
+                "footerCopy": "© 2026 . All rights reserved."
             },
             "ru": {
-                "back": "Назад",
-                "eyebrow": "Автоматизация",
                 "heroTitle": "Vibecode",
-                "stat1Value": "90%", "stat1Label": "Автоматизация",
-                "stat2Value": "AI-Bots", "stat2Label": "Линтер",
-                "stat3Value": "Instant", "stat3Label": "Рефакторинг",
-                "aboutLabel": "О проекте", "aboutTitle": "AI-редактор кода нового поколения",
-                "aboutText": "Для Vibecode мы создали революционный IDE-опыт, построенный вокруг AI-Bots. Проект ориентирован на предиктивное программирование и автоматический рефакторинг, позволяя разработчикам создавать сложные приложения с беспрецедентной скоростью.",
-                "taskLabel": "Задача", "taskTitle": "Переосмысление работы разработчика",
-                "taskText": "Vibecode стремился минимизировать трение при написании кода вручную. Целью была интеграция AI-Bots непосредственно в ядро редактора для предоставления контекстно-зависимых и архитектурно правильных советов.",
-                "solutionLabel": "Решение", "solutionTitle": "Контекстная интеграция ИИ",
-                "solutionText": "Мы внедрили уровень глубокой интеграции для AI-Bots, который анализирует всю кодовую базу в реальном времени. Это позволяет редактору предлагать высокоуровневый рефакторинг и автоматическую генерацию кода по специфическим паттернам проекта.",
-                "resultLabel": "Результаты", "resultTitle": "Чего мы достигли",
-                "res1Value": "90%", "res1Desc": "Снижение ручного кода",
-                "res2Value": "AI-Bots", "res2Desc": "Интеллектуальный движок",
-                "res3Value": "10x", "res3Desc": "Скорость поставки",
-                "footerCopy": "© 2026 Zodtech. Все права защищены."
+                "heroSubtitle": "AI-редактор кода нового поколения",
+                "summaryHeading": "О клиенте:",
+                "summaryText": "Vibecode — инновационная компания по разработке инструментов, ориентированных на будущее кодинга. Они создали революционный опыт IDE вокруг внутренних AI-Bots.",
+                "processHeading": "Что мы сделали:",
+                "processText": "Мы внедрили уровень глубокой интеграции для AI-Bots, который анализирует всю кодовую базу в реальном времени. Интеграция ботов напрямую в ядро редактора позволила обеспечить контекстный рефакторинг и автоматическую генерацию кода.",
+                "resultsHeading": "Результаты:",
+                "resultsText": "Редактор с поддержкой ИИ кардинально изменил опыт разработчиков, что привело к колоссальному сокращению времени на ручное написание кода. Проект успешно запустил мощный интеллектуальный движок.",
+                "res1": "Снижение ручного ввода кода на 90%",
+                "res2": "Запуск интеллектуального движка AI-Bots",
+                "res3": "10-кратное увеличение скорости разработки",
+                "techHeading": "Стек технологий:",
+                "footerCopy": "© 2026 . Все права защищены."
             }
         };
 
