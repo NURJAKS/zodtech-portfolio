@@ -13,8 +13,8 @@
     <meta name="keywords"
         content="automation case studies, business automation, AI for business, Zodtech, Zodtek, Zotech">
     <link rel="canonical" href="https://zodtech.kz/services/">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zodtech.kz/services/">
     <meta property="og:title" content="Case studies: AI &amp; business automation | Zodtech">
@@ -1154,13 +1154,13 @@
     <div class="depth-layer"></div>
 
     <header class="site-header">
-        <a href="/" class="back-btn" aria-label="Back">
+        <a href="../" class="back-btn" aria-label="Back">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M15 18l-6-6 6-6" />
             </svg>
         </a>
-        <a href="/" class="logo">
+        <a href="../" class="logo">
             <img src="../assets/LOGO.png" alt="zodtech Logo" class="logo-icon">
             <div class="logo-text">Zodtech</div>
         </a>
@@ -1434,7 +1434,7 @@
 
             // Update Grid
             grid.innerHTML = data.items.map(item => `
-                <a href="${item.href ? item.href : `/services/${item.id}`}" class="case-card" ${item.href ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+                <a href="${item.href ? item.href : `./${item.id}/`}" class="case-card" ${item.href ? 'target="_blank" rel="noopener noreferrer"' : ''}>
                     <div class="case-media-placeholder">
                         <div class="card-corners"></div>
                         <div class="case-media-inner">
